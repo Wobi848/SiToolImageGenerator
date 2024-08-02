@@ -3,25 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Si-Tool Image XML Generator</title>
+    <title>K&P Service-Tool Image Generator</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Si-Tool Image XML Generator <span id="version"></span></h1>
+    <h1>K&P Service-Tool Image Generator <span id="version"></span></h1>
     <form>
       <div>
-        <input type="text" id="rat-input" placeholder="Creator" />
+        <input type="text" id="rat-input" placeholder="Ersteller" />
       </div>
       <div>
-        <input type="text" id="imagename-input" placeholder="ObjectName" />
+        <input type="text" id="imagename-input" placeholder="Objekt Name" />
       </div>
       <div>
-        <input type="text" id="address-0" placeholder="address" />  
+        <input type="text" id="address-0" placeholder="Adresse" />
       </div>
     </form>
     <div>
       <button class="button" id="add-Component">Add Component</button>
-      <button class="button" id="generate-and-display-xml">Generate and Display XML</button>
+      <button class="button" id="generate-and-display-xml">
+        Generate and Display XML
+      </button>
       <button class="button" id="save-xml" disabled>Save XML</button>
     </div>
     <pre id="xml-output"></pre>

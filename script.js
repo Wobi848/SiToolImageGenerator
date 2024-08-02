@@ -17,7 +17,7 @@ const saveXmlButton = document.getElementById("save-xml");
 const xmlOutput = document.getElementById("xml-output");
 if (versionElement)
     versionElement.innerText = `v${version}`;
-console.log(`v${version}`);
+console.log(`v${version} - Alle anregungen an t.rappo@kieback-peter.ch`);
 addComponentButton.addEventListener("click", () => {
     var _a;
     const newComponentForm = document.createElement("div");
@@ -108,14 +108,12 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
                   </Titles>
                   <Image src="#cecece" y="17" w="300" h="23" editType="RECTANGLE"/>
                   <Image src="#ff7400" w="20" h="20" editType="RECTANGLE"/>
-                  <!-- Backlayer add if there more then 2 Free Components y+40 -->
                   <Image src="#e8f3f6" y="20" w="300" h="${freeCompYValue - 18}" editType="RECTANGLE"/>
               ${backgroundLayer
         .map((backgroundLayer) => `
                   <Image src="#faf9f8" y="${backgroundLayer.y}" w="300" h="20" editType="RECTANGLE"/>`)
         .join("")}
               </FreeComponent>
-              <!-- FreeComponent Changable from here on -->
           ${freeComponent
         .map((freeComponent) => `
               <FreeComponent name="Comp$00${freeComponent.comp}" x="0" y="${freeComponent.y}" w="300" h="20">
