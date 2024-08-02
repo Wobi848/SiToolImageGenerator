@@ -3,10 +3,10 @@ let backgroundLayer = [];
 let backgroundLayerY = 42;
 let freeComponent = [];
 let freeComponentCount = 1;
-const freeComponentComp = 268; // add plus 2, we need leading zeros 00
-const freeComponentVar = 153231; // add plus 2
-const freeComponentY = 22; // add plus 20
-const freeComponentAddress = "tOff"; // changable with input
+const freeComponentComp = 268;
+const freeComponentVar = 153231;
+const freeComponentY = 22;
+const freeComponentAddress = "tOff";
 const version = "0.3";
 const versionElement = document.getElementById("version");
 const ratInput = document.getElementById("rat-input");
@@ -27,7 +27,6 @@ addComponentButton.addEventListener("click", () => {
     `;
     (_a = document.querySelector("form")) === null || _a === void 0 ? void 0 : _a.appendChild(newComponentForm);
     freeComponentCount++;
-    // Add event listener to the remove button
     const removeButton = newComponentForm.querySelector(".remove-button");
     if (removeButton) {
         removeButton.addEventListener("click", () => {
@@ -64,11 +63,11 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
             y: freeCompYValue,
             address: addressInput.value,
         });
-        freeCompCompValue += 2; // add plus 2, we need leading zeros 00
-        freeCompVarValue += 2; // add plus 2
-        freeCompYValue += 20; // add plus 20
+        freeCompCompValue += 2;
+        freeCompVarValue += 2;
+        freeCompYValue += 20;
     }
-    const ratValue = ratInput.value; // Get the value of the RAT input field
+    const ratValue = ratInput.value;
     const imageNameValue = imageNameInput.value;
     let xml = `
   <?xml version="1.0" encoding="UTF-8"?>
@@ -134,7 +133,6 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
       </FreePlantImageTemplate>
   </EditorImageTemplate>
     `;
-    // Clean up
     // Display the XML output
     xmlOutput.innerText = xml;
     saveXmlButton.disabled = false;

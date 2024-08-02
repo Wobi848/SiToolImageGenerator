@@ -1,4 +1,3 @@
-// Get the input fields and buttons
 interface BackgroundLayer {
   y: number;
 }
@@ -16,10 +15,10 @@ let backgroundLayerY = 42;
 let freeComponent: FreeComponent[] = [];
 let freeComponentCount = 1;
 
-const freeComponentComp = 268; // add plus 2, we need leading zeros 00
-const freeComponentVar = 153231; // add plus 2
-const freeComponentY = 22; // add plus 20
-const freeComponentAddress = "tOff"; // changable with input
+const freeComponentComp = 268;
+const freeComponentVar = 153231;
+const freeComponentY = 22;
+const freeComponentAddress = "tOff";
 const version = "0.3";
 
 const versionElement = document.getElementById("version");
@@ -50,7 +49,6 @@ addComponentButton.addEventListener("click", () => {
   document.querySelector("form")?.appendChild(newComponentForm);
   freeComponentCount++;
 
-  // Add event listener to the remove button
   const removeButton = newComponentForm.querySelector(".remove-button");
   if (removeButton) {
     removeButton.addEventListener("click", () => {
@@ -64,9 +62,7 @@ addComponentButton.addEventListener("click", () => {
 generateAndDisplayXmlButton.addEventListener("click", (event) => {
   event.preventDefault(); // Prevent the form from submitting
   // Create the XML string
-
   // Create Background for readability
-
   backgroundLayer = [];
   let backgroundLayerCount = Math.floor(freeComponentCount / 2);
   let backgrundLayerYValue = backgroundLayerY;
@@ -99,12 +95,12 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
       address: addressInput.value,
     });
 
-    freeCompCompValue += 2; // add plus 2, we need leading zeros 00
-    freeCompVarValue += 2; // add plus 2
-    freeCompYValue += 20; // add plus 20
+    freeCompCompValue += 2;
+    freeCompVarValue += 2;
+    freeCompYValue += 20;
   }
 
-  const ratValue = ratInput.value; // Get the value of the RAT input field
+  const ratValue = ratInput.value;
   const imageNameValue = imageNameInput.value;
 
   let xml = `
@@ -177,7 +173,6 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
       </FreePlantImageTemplate>
   </EditorImageTemplate>
     `;
-  // Clean up
 
   // Display the XML output
   xmlOutput.innerText = xml;
