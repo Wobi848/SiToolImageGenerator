@@ -16,11 +16,13 @@ let backgroundLayerY = 42;
 let freeComponent: FreeComponent[] = [];
 let freeComponentCount = 1;
 
-let freeComponentComp = 268; // add plus 2, we need leading zeros 00
-let freeComponentVar = 153231; // add plus 2
-let freeComponentY = 22; // add plus 20
-let freeComponentAddress = "tOff"; // changable with input
+const freeComponentComp = 268; // add plus 2, we need leading zeros 00
+const freeComponentVar = 153231; // add plus 2
+const freeComponentY = 22; // add plus 20
+const freeComponentAddress = "tOff"; // changable with input
+const version = "0.3";
 
+const versionElement = document.getElementById("version");
 const ratInput = document.getElementById("rat-input") as HTMLInputElement;
 const imageNameInput = document.getElementById(
   "imagename-input"
@@ -36,14 +38,8 @@ const generateAndDisplayXmlButton = document.getElementById(
 const saveXmlButton = document.getElementById("save-xml") as HTMLButtonElement;
 const xmlOutput = document.getElementById("xml-output") as HTMLPreElement;
 
-// addComponentButton.addEventListener("click", () => {
-//   const newComponentForm = document.createElement("div");
-//   newComponentForm.innerHTML = `
-//       <input type="text" id="address-${freeComponentCount}" placeholder="address" />
-//     `;
-//   document.querySelector("form")?.appendChild(newComponentForm);
-//   freeComponentCount++;
-// });
+if (versionElement) versionElement.innerText = `v${version}`;
+console.log(`v${version}`);
 
 addComponentButton.addEventListener("click", () => {
   const newComponentForm = document.createElement("div");
@@ -63,8 +59,6 @@ addComponentButton.addEventListener("click", () => {
     });
   }
 });
-
-console.log("v0.3");
 
 // Add event listener to the generate and display button
 generateAndDisplayXmlButton.addEventListener("click", (event) => {
