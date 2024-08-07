@@ -1,3 +1,4 @@
+// Some Comment
 interface BackgroundLayer {
   y: number;
 }
