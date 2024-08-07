@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EditorImageTemplate name="RAT" objectType="H033" platform="DDC4000" version="1.7.1" langs="en,de" prescan="false">
+    <Comment lang="en">Object Image</Comment>
+    <Comment lang="de">Object Image</Comment>
+    <FreePlantImageTemplate w="1000" h="162">
+        <Titles>
+            <Title lang="de">Objektbild</Title>
+            <Title lang="en">Object Image</Title>
+        </Titles>
+        <Text style="R12" txtColor="#22a8b0" x="204" y="1" w="100">
+            <Title lang="de">Objekt: H033</Title>
+            <Title lang="en">Object: H033</Title>
+        </Text>
+        <FreeAggregate name="Agg$00006" w="414">
+            <Titles>
+                <Title lang="de">Struktur</Title>
+                <Title lang="en">Structure</Title>
+            </Titles>
+            <Image src="#e4e4e4" x="128" w="1" editType="RECTANGLE"/>
+            <Image src="#e4e4e4" x="299" w="1" editType="RECTANGLE"/>
+        </FreeAggregate>
+        <FreeAggregate name="Agg$00008" w="300">
+            <Titles>
+                <Title lang="de">Parameters</Title>
+                <Title lang="en">Parameters</Title>
+            </Titles>
+            <Text style="R12" txtHorAlign="left" x="25" y="5" w="150">
+                <Title lang="de">Parameter</Title>
+                <Title lang="en">Para</Title>
+            </Text>
+            <FreeComponent name="Comp$00127">
+                <Titles>
+                    <Title lang="de">Ansicht</Title>
+                    <Title lang="en">Design</Title>
+                </Titles>
+                <Image src="#cecece" y="17" w="300" h="23" editType="RECTANGLE"/>
+                <Image src="#ff7400" w="20" h="20" editType="RECTANGLE"/>
+                <Image src="#e8f3f6" y="20" w="300" h="147" editType="RECTANGLE"/>
+                <Image src="#faf9f8" y="42" w="300" h="20" editType="RECTANGLE"/>
+                <Image src="#faf9f8" y="82" w="300" h="20" editType="RECTANGLE"/>
+                <Image src="#faf9f8" y="122" w="300" h="20" editType="RECTANGLE"/>
+            </FreeComponent>
+            <FreeComponent name="Comp$00268" x="0" y="22" w="300" h="20">
+                <Titles>
+                    <Title lang="de">parameter Config</Title>
+                    <Title lang="en">parameter Config</Title>
+                </Titles>
+                <ValueDecl name="Var$153231" previewValue="120" address="Config">
+                    <Title lang="de">Config</Title>
+                    <Title lang="en">Config</Title>
+                </ValueDecl>
+                <DropArea type="dst" ref="Var$153231" x="5" y="2" w="120" h="20"/>
+                <TextValue style="NominalValue12" ref="Var$153231" editable="true" x="5" y="2" w="120"/>
+                <Label useTitles="false" style="R10" txtHorAlign="left" ref="Var$153231" x="132" y="4" w="200" h="12"/>
+            </FreeComponent>
+            <FreeComponent name="Comp$00270" x="0" y="42" w="300" h="20">
+                <Titles>
+                    <Title lang="de">parameter Duration</Title>
+                    <Title lang="en">parameter Duration</Title>
+                </Titles>
+                <ValueDecl name="Var$153233" previewValue="120" address="Duration">
+                    <Title lang="de">Duration</Title>
+                    <Title lang="en">Duration</Title>
+                </ValueDecl>
+                <DropArea type="dst" ref="Var$153233" x="5" y="2" w="120" h="20"/>
+                <TextValue style="NominalValue12" ref="Var$153233" editable="true" x="5" y="2" w="120"/>
+                <Label useTitles="false" style="R10" txtHorAlign="left" ref="Var$153233" x="132" y="4" w="200" h="12"/>
+            </FreeComponent>
+            <FreeComponent name="Comp$00272" x="0" y="62" w="300" h="20">
+                <Titles>
+                    <Title lang="de">parameter HB</Title>
+                    <Title lang="en">parameter HB</Title>
+                </Titles>
+                <ValueDecl name="Var$153235" previewValue="120" address="HB">
+                    <Title lang="de">HB</Title>
+                    <Title lang="en">HB</Title>
+                </ValueDecl>
+                <DropArea type="dst" ref="Var$153235" x="5" y="2" w="120" h="20"/>
+                <TextValue style="NominalValue12" ref="Var$153235" editable="true" x="5" y="2" w="120"/>
+                <Label useTitles="false" style="R10" txtHorAlign="left" ref="Var$153235" x="132" y="4" w="200" h="12"/>
+            </FreeComponent>
+            <FreeComponent name="Comp$00274" x="0" y="82" w="300" h="20">
+                <Titles>
+                    <Title lang="de">parameter ObjId</Title>
+                    <Title lang="en">parameter ObjId</Title>
+                </Titles>
+                <ValueDecl name="Var$153237" previewValue="120" address="ObjId">
+                    <Title lang="de">ObjId</Title>
+                    <Title lang="en">ObjId</Title>
+                </ValueDecl>
+                <DropArea type="dst" ref="Var$153237" x="5" y="2" w="120" h="20"/>
+                <TextValue style="NominalValue12" ref="Var$153237" editable="true" x="5" y="2" w="120"/>
+                <Label useTitles="false" style="R10" txtHorAlign="left" ref="Var$153237" x="132" y="4" w="200" h="12"/>
+            </FreeComponent>
+            <FreeComponent name="Comp$00276" x="0" y="102" w="300" h="20">
+                <Titles>
+                    <Title lang="de">parameter PollCycl</Title>
+                    <Title lang="en">parameter PollCycl</Title>
+                </Titles>
+                <ValueDecl name="Var$153239" previewValue="120" address="PollCycl">
+                    <Title lang="de">PollCycl</Title>
+                    <Title lang="en">PollCycl</Title>
+                </ValueDecl>
+                <DropArea type="dst" ref="Var$153239" x="5" y="2" w="120" h="20"/>
+                <TextValue style="NominalValue12" ref="Var$153239" editable="true" x="5" y="2" w="120"/>
+                <Label useTitles="false" style="R10" txtHorAlign="left" ref="Var$153239" x="132" y="4" w="200" h="12"/>
+            </FreeComponent>
+            <FreeComponent name="Comp$00278" x="0" y="122" w="300" h="20">
+                <Titles>
+                    <Title lang="de">parameter ProtSel</Title>
+                    <Title lang="en">parameter ProtSel</Title>
+                </Titles>
+                <ValueDecl name="Var$153241" previewValue="120" address="ProtSel">
+                    <Title lang="de">ProtSel</Title>
+                    <Title lang="en">ProtSel</Title>
+                </ValueDecl>
+                <DropArea type="dst" ref="Var$153241" x="5" y="2" w="120" h="20"/>
+                <TextValue style="NominalValue12" ref="Var$153241" editable="true" x="5" y="2" w="120"/>
+                <Label useTitles="false" style="R10" txtHorAlign="left" ref="Var$153241" x="132" y="4" w="200" h="12"/>
+            </FreeComponent>
+            <FreeComponent name="Comp$00280" x="0" y="142" w="300" h="20">
+                <Titles>
+                    <Title lang="de">parameter Threshld</Title>
+                    <Title lang="en">parameter Threshld</Title>
+                </Titles>
+                <ValueDecl name="Var$153243" previewValue="120" address="Threshld">
+                    <Title lang="de">Threshld</Title>
+                    <Title lang="en">Threshld</Title>
+                </ValueDecl>
+                <DropArea type="dst" ref="Var$153243" x="5" y="2" w="120" h="20"/>
+                <TextValue style="NominalValue12" ref="Var$153243" editable="true" x="5" y="2" w="120"/>
+                <Label useTitles="false" style="R10" txtHorAlign="left" ref="Var$153243" x="132" y="4" w="200" h="12"/>
+            </FreeComponent>
+        </FreeAggregate>
+    </FreePlantImageTemplate>
+</EditorImageTemplate>

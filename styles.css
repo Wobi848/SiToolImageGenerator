@@ -1,6 +1,36 @@
 body {
+  margin: 0;
+  margin-bottom: 40px;
+  padding: 0;
   font-family: Arial, sans-serif;
   background-color: #212121; /* Dark gray background */
+  transition: background-color 0.5s; /* Add transition effect */
+}
+
+.light-theme {
+  background-color: #f7f7f7; /* Light gray background */
+}
+
+header {
+  padding: 10px;
+  text-align: center;
+  color: #fff; /* White text for the header */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-button {
+  background-color: #fff; /* White background */
+  color: #333; /* Dark gray text */
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.theme-button:hover {
+  background-color: #eee; /* Light gray background on hover */
 }
 
 #xml-output {
@@ -85,6 +115,11 @@ input[type="text"] + input[type="text"] {
   margin-left: 20px;
 }
 
+input[required]:invalid {
+  border: 1px solid chocolate;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
 form > div {
   margin-bottom: 0px;
 }
@@ -92,4 +127,79 @@ form > div {
 form > div > input[type="text"] {
   min-width: 50%;
   width: calc(100% - 100px);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
+  height: 20px; /* set a fixed height */
+  display: flex; /* add flexbox */
+  justify-content: space-between; /* space out the content */
+  align-items: center; /* center the content vertically */
+}
+
+.terms-button {
+  margin-right: 10px; /* reduced margin */
+  background-color: #555; /* dark gray background */
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px; /* reduced font size */
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.terms-button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.terms-button:hover {
+  background-color: #666; /* darker gray background on hover */
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #fff;
+  color: #333;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.download-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }

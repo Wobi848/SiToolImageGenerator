@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #212121; /* Dark gray background */
+  transition: background-color 0.5s; /* Add transition effect */
+}
+
+.light-theme {
+  background-color: #f7f7f7; /* Light gray background */
+}
+
+h1 {
+  color: chocolate;
+}
+
+.button-container {
+  display: flex; /* Add flexbox to the button container */
+  justify-content: flex-end; /* Align items to the right */
+  margin-bottom: 20px; /* Add some margin below the button */
+}
+
+#download-all-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Bright blue background */
+  color: #ffffff; /* White text */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Add transition effect */
+}
+
+#download-all-button:hover {
+  background-color: #0069d9; /* Darker blue background on hover */
+}
+
+#download-all-button:disabled {
+  background-color: #999; /* Gray background when disabled */
+  cursor: not-allowed;
+}
+
+.container {
+  margin-top: 20px; /* Add margin to separate the button from the file list */
+}
+
+#file-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#file-list li {
+  padding: 10px;
+  border-bottom: 1px solid #333; /* Dark gray border */
+  display: flex;
+  justify-content: space-between;
+}
+
+#file-list li:last-child {
+  border-bottom: none;
+}
+
+#file-list button {
+  background-color: #4caf50; /* Green background */
+  color: #fff; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#file-list button:hover {
+  background-color: #3e8e41; /* Darker green background on hover */
+}
+
+#file-list span {
+  font-weight: bold;
+  color: #fff; /* White text */
+  margin-right: 10px;
+  display: inline-block;
+  width: 150px;
+  text-align: left;
+}
