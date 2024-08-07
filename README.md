@@ -1,8 +1,8 @@
-# My Awesome Project
+# Si-Tool Image Generator
 
 ## Description
 
-My Awesome Project is a simple web application that does something cool.
+Si-Tool Image Generator is a simple web application that generates images for Si-Tool.
 
 ## Getting Started
 
@@ -13,17 +13,17 @@ My Awesome Project is a simple web application that does something cool.
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/my-awesome-project.git`
+1. Clone the repository: `git clone https://github.com/Wobi848/SiToolImageGenerator.git`
 2. Install dependencies: `npm install`
 3. Start the application: `npm start`
 
 ### Usage
 
-* Open a web browser and navigate to `http://localhost:3000`
+* Open a web browser and navigate to `http://kp.rappo.dev`
 
 ## Features
 
-* Does something cool
+* Generates images for Si-Tool
 * Has a nice user interface
 
 ## Contributing
@@ -32,11 +32,11 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## License
 
-My Awesome Project is released under the MIT License.
+Si-Tool Image Generator is released under the MIT License.
 
 ## Authors
 
-* Your Name
+* RAT
 
 ## Acknowledgments
 
