@@ -1,4 +1,0 @@
-localhost:3306
-trappo_kp_rappo_dev
-rappo_dev
-,.-Anabelis132,.-
