@@ -1,36 +1,46 @@
 body {
   font-family: Arial, sans-serif;
+  background-color: #212121; /* Dark gray background */
 }
 
 #xml-output {
   white-space: pre;
   font-family: monospace;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #333; /* Dark gray border */
+  background-color: #444; /* Dark gray background */
+  color: #fff; /* White text */
+  overflow-y: auto; /* Add a scrollbar when the content overflows */
+  overflow-x: auto;
+  margin-top: 10px; /* Add some space between the buttons and the <pre> element */
+  max-height: 90vh;
 }
 
+h1 {
+  color: chocolate;
+}
 .button {
   margin: 10px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50;
-  color: #fff;
+  background-color: #666; /* Dark gray background */
+  color: #fff; /* White text */
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #3e8e41;
+  background-color: #555; /* Darker gray background on hover */
 }
 
 .button:disabled {
-  background-color: #ccc;
+  background-color: #333; /* Dark gray background when disabled */
   cursor: not-allowed;
 }
 
 .remove-button {
-  background-color: #ff0000;
-  color: #ffffff;
+  background-color: #900; /* Dark red background */
+  color: #fff; /* White text */
   border: none;
   padding: 5px;
   font-size: 10px;
@@ -40,32 +50,34 @@ body {
 }
 
 .remove-button:hover {
-  background-color: #9b0000;
+  background-color: #800; /* Darker red background on hover */
 }
 
 input[type="text"] {
   padding: 5px;
   margin: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #333; /* Dark gray border */
   border-radius: 5px;
   width: 200px;
   font-size: 16px;
   font-family: Arial, sans-serif;
   height: 10px;
   line-height: 10px;
+  background-color: #444; /* Dark gray background */
+  color: #fff; /* White text */
 }
 
 input[type="text"]:focus {
-  border-color: #aaa;
+  border-color: #555; /* Darker gray border on focus */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 input[type="text"]::placeholder {
-  color: #999;
+  color: #666; /* Dark gray placeholder text */
 }
 
 input[type="text"]:invalid {
-  border-color: #ff0000;
+  border-color: #900; /* Dark red border on invalid input */
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
 
@@ -80,11 +92,4 @@ form > div {
 form > div > input[type="text"] {
   min-width: 50%;
   width: calc(100% - 100px);
-}
-
-#xml-output {
-  overflow-y: auto; /* Add a scrollbar when the content overflows */
-  overflow-x: auto;
-  margin-top: 10px; /* Add some space between the buttons and the <pre> element */
-  max-height: 90vh;
 }
