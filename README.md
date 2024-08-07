@@ -40,4 +40,4 @@ Si-Tool Image Generator is released under the MIT License.
 
 ## Acknowledgments
 
-* Thanks to [font-awesome] for making this project possible.
+* Thanks to font-awesome for making this project possible.

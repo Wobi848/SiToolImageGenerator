@@ -49,6 +49,7 @@ header {
 h1 {
   color: chocolate;
 }
+
 .button {
   margin: 10px;
   padding: 10px 20px;
@@ -196,10 +197,14 @@ form > div > input[type="text"] {
   background-color: #333;
   color: #fff;
   border: none;
-  padding: 10px;
+  padding: 13px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+}
+
+.download-button:hover {
+  background-color: #555; /* add a nice hover effect */
 }

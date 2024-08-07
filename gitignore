@@ -31,3 +31,4 @@ images/
 
 # Ignore the src folder
 src/
+node_modules/

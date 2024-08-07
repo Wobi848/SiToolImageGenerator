@@ -21,6 +21,12 @@ if (lightThemeButton) {
         document.body.classList.toggle("light-theme");
     });
 }
+let refreshButton = document.getElementById('refresh-button');
+if (refreshButton) {
+    refreshButton.addEventListener('click', function () {
+        location.reload();
+    });
+}
 if (versionElement)
     versionElement.innerText = `v${version}`;
 console.log(`v${version} - Alle anregungen an t.rappo@kieback-peter.ch`);

@@ -5,15 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Download Files</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
   </head>
   <body>
-    <h1>XML File Download Site</h1>
-    <div class="button-container">
+    <header>
+      <h1>XML File Download Site</h1>
+    </header>
+    <a href="/" class="download-button download-tooltip">
+      <i class="fas fa-cog"></i>
+    </a>
+    <div class="button-container filesp">
       <button id="download-all-button">Download All</button>
     </div>
-    <div class="container">
+    <div class="container filesp">
       <ul id="file-list"></ul>
     </div>
+    <footer class="footer">
+      <p>&copy; 2024 kp.rappo.dev</p>
+      <button id="refresh-button" type="button" class="terms-button">
+        <a href="/"></a>
+      </button>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

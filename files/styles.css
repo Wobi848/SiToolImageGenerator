@@ -1,4 +1,7 @@
 body {
+  margin: 0;
+  margin-bottom: 40px;
+  padding: 0;
   font-family: Arial, sans-serif;
   background-color: #212121; /* Dark gray background */
   transition: background-color 0.5s; /* Add transition effect */
@@ -6,6 +9,53 @@ body {
 
 .light-theme {
   background-color: #f7f7f7; /* Light gray background */
+}
+
+header {
+  padding: 10px;
+  text-align: center;
+  color: #fff; /* White text for the header */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
+  height: 20px; /* set a fixed height */
+  display: flex; /* add flexbox */
+  justify-content: space-between; /* space out the content */
+  align-items: center; /* center the content vertically */
+}
+
+.terms-button {
+  margin-right: 10px; /* reduced margin */
+  background-color: #555; /* dark gray background */
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px; /* reduced font size */
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.filesp {
+  margin: 10px;
+}
+
+.terms-button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.terms-button:hover {
+  background-color: #666; /* darker gray background on hover */
 }
 
 h1 {
@@ -48,10 +98,9 @@ h1 {
 }
 
 #file-list li {
-  padding: 10px;
-  border-bottom: 1px solid #333; /* Dark gray border */
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Add spacing between files */
 }
 
 #file-list li:last-child {
@@ -59,12 +108,13 @@ h1 {
 }
 
 #file-list button {
-  background-color: #4caf50; /* Green background */
-  color: #fff; /* White text */
+  background-color: #4caf50;
+  color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: auto; /* Add this line */
 }
 
 #file-list button:hover {
@@ -78,4 +128,43 @@ h1 {
   display: inline-block;
   width: 150px;
   text-align: left;
+}
+
+#file-list .file-name {
+  font-weight: bold;
+  color: #fff; /* White text */
+  margin-right: 30px;
+  width: 150px;
+  text-align: left;
+}
+
+#file-list .file-date {
+  font-size: 0.8em;
+  color: #999; /* Light gray text */
+  margin-right: 10px; /* Add some margin to the right */
+}
+
+#file-list .file-creator {
+  font-size: 0.8em;
+  color: #666; /* Darker gray text */
+  margin-right: 10px; /* Add some margin to the right */
+}
+
+.download-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 13px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.download-button:hover {
+  background-color: #555; /* add a nice hover effect */
 }
