@@ -62,9 +62,9 @@ files.forEach((file) => {
     if (fileListElement)
         fileListElement.appendChild(listItem);
 });
-let refreshButton = document.getElementById('refresh-button');
-if (refreshButton) {
-    refreshButton.addEventListener('click', function () {
+let refreshButton2 = document.getElementById('refresh-button');
+if (refreshButton2) {
+    refreshButton2.addEventListener('click', function () {
         location.reload();
     });
 }
