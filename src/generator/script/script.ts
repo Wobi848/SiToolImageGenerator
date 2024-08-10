@@ -1,3 +1,11 @@
+interface KeyEvent {
+  generate: string;
+  save: string;
+  reset: string;
+  addButton: string;
+  removeButton: string;
+}
+
 interface BackgroundLayer {
   y: number;
 }
@@ -5,27 +13,42 @@ interface BackgroundLayer {
 interface FreeComponent {
   comp: number;
   var: number;
+  x: number;
   y: number;
+  width: number;
   address: string;
+  widthElement: number;
+  xLabel: number;
+  widthLabel: number;
 }
 
+let keyStrokeEvent: KeyEvent;
 let backgroundLayer: BackgroundLayer[] = [];
 let backgroundLayerY = 42;
 
 let freeComponent: FreeComponent[] = [];
 let freeComponentCount = 1;
 
+let freeComponentRows = 1;
+
 const freeComponentComp = 268;
 const freeComponentVar = 153231;
+const freeComponentX = 0;
 const freeComponentY = 22;
+let freeComponentWidth = 300;
 const freeComponentAddress = "tOff";
-const version = "0.6";
+const version = "0.7";
 
 const versionElement = document.getElementById("version");
+const widthInput = document.getElementById("width-input") as HTMLInputElement;
 const ratInput = document.getElementById("rat-input") as HTMLInputElement;
 const imageNameInput = document.getElementById(
   "imagename-input"
 ) as HTMLInputElement;
+
+widthInput.addEventListener("input", () => {
+  freeComponentWidth = parseInt(widthInput.value, 10);
+});
 
 const addComponentButton = document.getElementById(
   "add-Component"
@@ -37,19 +60,11 @@ const generateAndDisplayXmlButton = document.getElementById(
 const saveXmlButton = document.getElementById("save-xml") as HTMLButtonElement;
 const xmlOutput = document.getElementById("xml-output") as HTMLPreElement;
 
-const lightThemeButton = document.getElementById("light-theme-button");
-if (lightThemeButton) {
-  lightThemeButton.addEventListener("click", () => {
-    document.body.classList.toggle("light-theme");
-  });
+function refreshPage() {
+  location.reload();
 }
 
-let refreshButton = document.getElementById('refresh-button');
-if (refreshButton) {
-  refreshButton.addEventListener('click', function() {
-    location.reload();
-  });
-}
+document.getElementById("refresh-button")?.addEventListener("click", refreshPage);
 
 if (versionElement) versionElement.innerText = `v${version}`;
 console.log(`v${version} - Alle anregungen an t.rappo@kieback-peter.ch`);
@@ -63,7 +78,9 @@ addComponentButton.addEventListener("click", () => {
   document.querySelector("form")?.appendChild(newComponentForm);
   freeComponentCount++;
 
-  const removeButton = newComponentForm.querySelector(".remove-button");
+  const removeButton = newComponentForm.querySelector(
+    ".remove-button"
+  ) as HTMLButtonElement;
   if (removeButton) {
     removeButton.addEventListener("click", () => {
       newComponentForm.remove();
@@ -92,10 +109,18 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
     backgrundLayerYValue += 40;
   }
 
+  // ImageTemplate
+  let imageTemplateWidth = freeComponentRows * freeComponentWidth + 200;
+  let imageStructurTitle = freeComponentRows * freeComponentWidth - 100;
+  let imageStructurRowLineX = freeComponentWidth / 2;
+  let imageStructurRowSecondLineX = imageStructurRowLineX - 1;
   // Create FreeCompontens
   let freeCompCompValue = freeComponentComp;
   let freeCompVarValue = freeComponentVar;
   let freeCompYValue = freeComponentY;
+  let freeCompWidthxRows = freeComponentRows * freeComponentWidth;
+  let freeCompWidth = freeComponentWidth;
+  let freeCompX = freeComponentX;
 
   freeComponent = [];
   for (let i = 0; i < freeComponentCount; i++) {
@@ -105,8 +130,13 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
     freeComponent.push({
       comp: freeCompCompValue,
       var: freeCompVarValue,
+      x: freeCompX,
       y: freeCompYValue,
+      width: freeCompWidth,
       address: addressInput.value,
+      widthElement: freeCompWidth / 2 - 10,
+      xLabel: freeCompWidth / 2 + 5,
+      widthLabel: freeCompWidth / 2 - 10,
     });
 
     freeCompCompValue += 2;
@@ -119,14 +149,15 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <EditorImageTemplate name="${ratValue}" objectType="${imageNameValue}" platform="DDC4000" version="1.7.1" langs="en,de" prescan="false">
+    <!-- created with kp.rappo.dev ${version} -->
     <Comment lang="en">Object Image</Comment>
     <Comment lang="de">Object Image</Comment>
-    <FreePlantImageTemplate w="1000" h="${freeCompYValue - 0}">
+    <FreePlantImageTemplate w="${imageTemplateWidth}" h="${freeCompYValue - 0}">
         <Titles>
             <Title lang="de">Objektbild</Title>
             <Title lang="en">Object Image</Title>
         </Titles>
-        <Text style="R12" txtColor="#22a8b0" x="204" y="1" w="100">
+        <Text style="R12" txtColor="#22a8b0" x="${imageStructurTitle}" y="1" w="100">
             <Title lang="de">Objekt: ${imageNameValue}</Title>
             <Title lang="en">Object: ${imageNameValue}</Title>
         </Text>
@@ -135,10 +166,10 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
                 <Title lang="de">Struktur</Title>
                 <Title lang="en">Structure</Title>
             </Titles>
-            <Image src="#e4e4e4" x="128" w="1" editType="RECTANGLE"/>
-            <Image src="#e4e4e4" x="299" w="1" editType="RECTANGLE"/>
+            <Image src="#e4e4e4" x="${imageStructurRowLineX}" w="1" editType="RECTANGLE"/>
+            <Image src="#e4e4e4" x="${imageStructurRowSecondLineX}" w="1" editType="RECTANGLE"/>
         </FreeAggregate>
-        <FreeAggregate name="Agg$00008" w="300">
+        <FreeAggregate name="Agg$00008" w="${freeCompWidthxRows}">
             <Titles>
                 <Title lang="de">Parameters</Title>
                 <Title lang="en">Parameters</Title>
@@ -152,16 +183,16 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
                     <Title lang="de">Ansicht</Title>
                     <Title lang="en">Design</Title>
                 </Titles>
-                <Image src="#cecece" y="17" w="300" h="23" editType="RECTANGLE"/>
+                <Image src="#cecece" y="17" w="${freeCompWidthxRows}${freeCompWidthxRows}" h="23" editType="RECTANGLE"/>
                 <Image src="#ff7400" w="20" h="20" editType="RECTANGLE"/>
-                <Image src="#e8f3f6" y="20" w="300" h="${
-                  freeCompYValue - 15
-                }" editType="RECTANGLE"/>
+                <Image src="#e8f3f6" y="20" w="${freeCompWidthxRows}" h="${
+    freeCompYValue - 15
+  }" editType="RECTANGLE"/>
             ${backgroundLayer
               .map(
                 (backgroundLayer) =>
                   `
-                <Image src="#faf9f8" y="${backgroundLayer.y}" w="300" h="20" editType="RECTANGLE"/>
+                <Image src="#faf9f8" y="${backgroundLayer.y}" w="${freeCompWidthxRows}" h="20" editType="RECTANGLE"/>
                 `
               )
               .join("")}
@@ -170,18 +201,18 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
           .map(
             (freeComponent) =>
               `
-            <FreeComponent name="Comp$00${freeComponent.comp}" x="0" y="${freeComponent.y}" w="300" h="20">
+            <FreeComponent name="Comp$00${freeComponent.comp}" x="${freeComponent.x}" y="${freeComponent.y}" w="${freeComponent.width}" h="20">
                 <Titles>
                     <Title lang="de">parameter ${freeComponent.address}</Title>
                     <Title lang="en">parameter ${freeComponent.address}</Title>
                 </Titles>
-                <ValueDecl name="Var$${freeComponent.var}" previewValue="120" address="${freeComponent.address}">
+                <ValueDecl name="Var$${freeComponent.var}" previewValue="69" address="${freeComponent.address}">
                     <Title lang="de">${freeComponent.address}</Title>
                     <Title lang="en">${freeComponent.address}</Title>
                 </ValueDecl>
-                <DropArea type="dst" ref="Var$${freeComponent.var}" x="5" y="2" w="120" h="20"/>
-                <TextValue style="NominalValue12" ref="Var$${freeComponent.var}" editable="true" x="5" y="2" w="120"/>
-                <Label useTitles="false" style="R10" txtHorAlign="left" ref="Var$${freeComponent.var}" x="132" y="4" w="200" h="12"/>
+                <DropArea type="dst" ref="Var$${freeComponent.var}" x="5" y="2" w="${freeComponent.widthElement}" h="20"/>
+                <TextValue style="NominalValue12" ref="Var$${freeComponent.var}" editable="true" x="5" y="2" w="${freeComponent.widthElement}"/>
+                <Label useTitles="false" style="R10" txtHorAlign="left" ref="Var$${freeComponent.var}" x="${freeComponent.xLabel}" y="4" w="${freeComponent.widthLabel}" h="12"/>
             </FreeComponent>
             `
           )
@@ -209,3 +240,47 @@ saveXmlButton.addEventListener("click", () => {
 
 // Disable the save button initially
 saveXmlButton.disabled = true;
+
+// Keyboard Events
+keyStrokeEvent = {
+  generate: "g",
+  save: "s",
+  reset: "t",
+  addButton: "a",
+  removeButton: "y",
+};
+
+// Update Tooltips
+document.getElementById('add-Component')!.title = `Add a new component to the XML file (Alt + ${keyStrokeEvent.addButton.toUpperCase()})`;
+document.getElementById('generate-and-display-xml')!.title = `Generate and display XML (Alt + ${keyStrokeEvent.generate.toUpperCase()})`;
+document.getElementById('save-xml')!.title = `Save XML (Alt + ${keyStrokeEvent.save.toUpperCase()})`;
+document.getElementById('refresh-button')!.title = `Refresh page (Alt + ${keyStrokeEvent.reset.toUpperCase()})`;
+
+document.addEventListener("keydown", (event) => {
+  if (event.altKey) {
+    switch (event.key) {
+      case keyStrokeEvent.addButton:
+        addComponentButton.click();
+        break;
+      case keyStrokeEvent.removeButton:
+        const removeButtons = document.querySelectorAll(
+          ".remove-button"
+        ) as unknown as HTMLButtonElement[];
+        if (removeButtons.length > 0) {
+          removeButtons[removeButtons.length - 1].click(); // only click if there is at least one button
+        } else {
+          console.log("No components to remove");
+        }
+        break;
+      case keyStrokeEvent.generate:
+        generateAndDisplayXmlButton.click();
+        break;
+      case keyStrokeEvent.save:
+        saveXmlButton.click();
+        break;
+      case keyStrokeEvent.reset:
+        refreshPage();
+        break;
+    }
+  }
+});

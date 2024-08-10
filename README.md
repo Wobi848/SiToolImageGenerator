@@ -26,6 +26,11 @@ Si-Tool Image Generator is a simple web application that generates images for Si
 * Generates images for Si-Tool
 * Has a nice user interface
 
+## To-Do
+
+* refactor code
+* add rows function
+
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request.

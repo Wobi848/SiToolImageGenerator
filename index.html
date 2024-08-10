@@ -10,13 +10,13 @@
     <meta name="robots" content="index, nofollow" />
     <title>K&P Service-Tool Image Generator</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/fav/favicon.ico" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/src/generator/style/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
   </head>
-  <body>
+  <body class="animated-background">
     <header>
       <h1>K&P Service-Tool Image Generator <span id="version"></span></h1>
     </header>
@@ -29,6 +29,9 @@
       </div>
       <div>
         <input type="text" id="imagename-input" placeholder="Objekt Name" />
+      </div>
+      <div>
+        <input type="text" id="width-input" value="300" placeholder="Width" min="300" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
       </div>
       <div>
         <input type="text" id="address-0" placeholder="Adresse" />
@@ -68,6 +71,6 @@
         <a href="/">Reset</a>
       </button>
     </footer>
-    <script src="script.js"></script>
+    <script src="/src/generator/script/script.js"></script>
   </body>
 </html>

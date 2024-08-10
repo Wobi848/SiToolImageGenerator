@@ -3,12 +3,9 @@ body {
   margin-bottom: 40px;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #212121; /* Dark gray background */
-  transition: background-color 0.5s; /* Add transition effect */
-}
+  background-color: #212121;  /* Dark gray background */
 
-.light-theme {
-  background-color: #f7f7f7; /* Light gray background */
+  transition: background-color 0.5s; /* Add transition effect */
 }
 
 header {
@@ -119,6 +116,11 @@ input[type="text"] + input[type="text"] {
 input[required]:invalid {
   border: 1px solid chocolate;
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 form > div {
