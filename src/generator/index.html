@@ -10,7 +10,9 @@
     <meta name="robots" content="index, nofollow" />
     <title>K&P Service-Tool Image Generator</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/fav/favicon.ico" />
-    <link rel="stylesheet" href="/src/generator/style/styles.css" />
+    <link rel="stylesheet" href="/src/global-styles/base.css" />
+    <link rel="stylesheet" href="/src/generator/style/components.css" />
+    <link rel="stylesheet" href="/src/generator/style/buttons.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -19,6 +21,11 @@
   <body class="animated-background">
     <header>
       <h1>K&P Service-Tool Image Generator <span id="version"></span></h1>
+      <div>
+        <a href="https://github.com/Wobi848/SiToolImageGenerator" target="_blank" class="github-button">
+        <i class="fab fa-github fa-circle"></i>
+      </a>
+      </div>
     </header>
     <a href="/files" class="download-button download-tooltip">
       <i class="fas fa-cloud-download-alt"></i>
@@ -31,7 +38,7 @@
         <input type="text" id="imagename-input" placeholder="Objekt Name" />
       </div>
       <div>
-        <input type="text" id="width-input" value="300" placeholder="Width" min="300" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        <input type="text" id="width-input" value="300" placeholder="Width" min="300">
       </div>
       <div>
         <input type="text" id="address-0" placeholder="Adresse" />

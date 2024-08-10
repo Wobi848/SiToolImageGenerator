@@ -1,0 +1,98 @@
+/* Input Styles */
+
+input[type="text"] {
+  padding: 3px;
+  margin: 3px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  width: 200px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  background-color: #444;
+  color: #fff;
+}
+
+input[type="text"]:focus {
+  border-color: #555;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]::placeholder {
+  color: #666;
+}
+
+input[type="text"]:invalid {
+  border-color: #900;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+input[type="text"] + input[type="text"] {
+  margin-left: 20px;
+}
+
+input[required]:invalid {
+  border: 1px solid chocolate;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Miscellaneous */
+
+#xml-output {
+  white-space: pre;
+  font-family: monospace;
+  padding: 10px;
+  border: 1px solid #333;
+  background-color: #444;
+  color: #fff;
+  overflow-y: auto;
+  overflow-x: auto;
+  margin-top: 10px;
+  max-height: 90vh;
+  max-width: 80vw; /* added max-width */
+}
+
+/* Forms */
+
+form > div {
+  margin-bottom: 0px;
+}
+
+form > div > input[type="text"] {
+  min-width: 50%;
+  width: calc(100% - 100px);
+}
+
+/* Tooltips */
+
+.tooltip {
+  position: absolute;
+  background-color: #fff;
+  color: #333;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: opacity 0.2s; /* added transition */
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
