@@ -1,2 +1,7 @@
 RewriteEngine On
+
+# Redirect root URL to /src/generator/index.html
 RewriteRule ^$ /src/generator/index.html [L]
+
+# Redirect /downloads to /src/download
+RewriteRule ^downloads/?$ /src/download/index.html  [L]
