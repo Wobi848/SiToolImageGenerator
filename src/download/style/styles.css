@@ -1,40 +1,3 @@
-body {
-  margin: 0;
-  margin-bottom: 40px;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #212121; /* Dark gray background */
-  transition: background-color 0.5s; /* Add transition effect */
-}
-
-.light-theme {
-  background-color: #f7f7f7; /* Light gray background */
-}
-
-header {
-  padding: 10px;
-  text-align: center;
-  color: #fff; /* White text for the header */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 5px;
-  font-size: 12px;
-  height: 20px; /* set a fixed height */
-  display: flex; /* add flexbox */
-  justify-content: space-between; /* space out the content */
-  align-items: center; /* center the content vertically */
-}
-
 .terms-button {
   margin-right: 10px; /* reduced margin */
   background-color: #555; /* dark gray background */
@@ -56,10 +19,6 @@ header {
 
 .terms-button:hover {
   background-color: #666; /* darker gray background on hover */
-}
-
-h1 {
-  color: chocolate;
 }
 
 .button-container {

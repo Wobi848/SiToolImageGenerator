@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  padding-bottom: 20px;
+  padding-bottom: 25px;
   font-family: Arial, sans-serif;
   background-color: #212121;
   transition: background-color 0.5s;
@@ -16,7 +16,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background-color: #666;
-  border-radius: 10px;
+  border-radius: 0px 5px 5px 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -25,7 +25,7 @@ body {
 
 ::-webkit-scrollbar-track {
   background-color: #333;
-  border-radius: 0;
+  border-radius: 0px 5px 5px 0px;
 }
 
 .header-wrapper {
@@ -45,7 +45,8 @@ header {
 
 h1 {
   color: chocolate;
-  margin: 0;
+  margin: 0 auto; /* Add this line */
+  text-align: center;
 }
 
 .footer {
@@ -79,4 +80,32 @@ h1 {
 
 .copyright a {
   margin-left: 5px;
+}
+
+.terms-button {
+  background-color: #555; /* dark gray background */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px; /* reduced font size */
+  margin-right: 10px; /* reduced margin */
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.terms-button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.terms-button:hover {
+  background-color: #666; /* darker gray background on hover */
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
 }

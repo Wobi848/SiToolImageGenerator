@@ -11,23 +11,34 @@ const freeComponentVar = 153231;
 const freeComponentX = 0;
 const freeComponentY = 22;
 let freeComponentWidth = 300;
+const freeComponentWidthmin = 300;
 const freeComponentAddress = "tOff";
-const version = "0.7";
+const version = "0.7.3";
+const fillAddressesButton = document.getElementById("fill-addresses");
 const versionElement = document.getElementById("version");
 const widthInput = document.getElementById("width-input");
 const ratInput = document.getElementById("rat-input");
 const imageNameInput = document.getElementById("imagename-input");
 widthInput.addEventListener("input", () => {
     freeComponentWidth = parseInt(widthInput.value, 10);
+    if (freeComponentWidth <= 300)
+        freeComponentWidth = freeComponentWidthmin;
 });
 const addComponentButton = document.getElementById("add-Component");
+fillAddressesButton.addEventListener("click", () => {
+    const addressInputs = document.querySelectorAll('input[id^="address-"]');
+    addressInputs.forEach((input, index) => {
+        input.value = `${index + 1}`;
+    });
+});
 const generateAndDisplayXmlButton = document.getElementById("generate-and-display-xml");
 const saveXmlButton = document.getElementById("save-xml");
 const xmlOutput = document.getElementById("xml-output");
 function refreshPage() {
     location.reload();
 }
-(_a = document.getElementById("refresh-button")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", refreshPage);
+(_a = document
+    .getElementById("refresh-button")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", refreshPage);
 if (versionElement)
     versionElement.innerText = `v${version}`;
 console.log(`v${version} - Alle anregungen an t.rappo@kieback-peter.ch`);
@@ -185,12 +196,14 @@ keyStrokeEvent = {
     reset: "t",
     addButton: "a",
     removeButton: "y",
+    fillAddresses: "v",
 };
 // Update Tooltips
-document.getElementById('add-Component').title = `Add a new component to the XML file (Alt + ${keyStrokeEvent.addButton.toUpperCase()})`;
-document.getElementById('generate-and-display-xml').title = `Generate and display XML (Alt + ${keyStrokeEvent.generate.toUpperCase()})`;
-document.getElementById('save-xml').title = `Save XML (Alt + ${keyStrokeEvent.save.toUpperCase()})`;
-document.getElementById('refresh-button').title = `Refresh page (Alt + ${keyStrokeEvent.reset.toUpperCase()})`;
+document.getElementById("add-Component").title = `Neu Adressen-Eingabe erstellen. (Alt + ${keyStrokeEvent.addButton.toUpperCase()})`;
+document.getElementById("generate-and-display-xml").title = `XML Erstellen und Anzeigen. (Alt + ${keyStrokeEvent.generate.toUpperCase()})`;
+document.getElementById("save-xml").title = `XML Datei speichern. (Alt + ${keyStrokeEvent.save.toUpperCase()})`;
+document.getElementById("refresh-button").title = `Zurücksetzen der Seite. (Alt + ${keyStrokeEvent.reset.toUpperCase()})`;
+document.getElementById("fill-addresses").title = `Alle Adress-Eingaben werden mit Zahlen von 1 aufwärts ausgefüllt. (Alt + ${keyStrokeEvent.fillAddresses.toUpperCase()})`;
 document.addEventListener("keydown", (event) => {
     if (event.altKey) {
         switch (event.key) {
@@ -214,6 +227,9 @@ document.addEventListener("keydown", (event) => {
                 break;
             case keyStrokeEvent.reset:
                 refreshPage();
+                break;
+            case keyStrokeEvent.fillAddresses:
+                fillAddressesButton.click();
                 break;
         }
     }

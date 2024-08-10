@@ -22,14 +22,21 @@
     <header>
       <h1>K&P Service-Tool Image Generator <span id="version"></span></h1>
       <div>
-        <a href="https://github.com/Wobi848/SiToolImageGenerator" target="_blank" class="github-button">
-        <i class="fab fa-github fa-circle"></i>
-      </a>
+        <a
+          href="https://github.com/Wobi848/SiToolImageGenerator"
+          target="_blank"
+          class="github-button"
+          aria-label="A Link to Github Repository"
+        >
+          <i class="fab fa-github fa-circle" alt="Github-Logo"></i>
+        </a>
       </div>
     </header>
-    <a href="/files" class="download-button download-tooltip">
+    <!--
+    <a href="/downloads" class="download-button download-tooltip">
       <i class="fas fa-cloud-download-alt"></i>
     </a>
+    -->
     <form>
       <div>
         <input type="text" id="rat-input" placeholder="Ersteller" />
@@ -38,20 +45,35 @@
         <input type="text" id="imagename-input" placeholder="Objekt Name" />
       </div>
       <div>
-        <input type="text" id="width-input" value="300" placeholder="Width" min="300">
+        <input
+          type="number"
+          id="width-input"
+          value="300"
+          placeholder="Width"
+          min="300"
+        />
+        <span class="unit">px</span>
       </div>
       <div>
         <input type="text" id="address-0" placeholder="Adresse" />
       </div>
     </form>
-    <div>
+    <div class="button-container">
       <button
         type="button"
         class="button"
         id="add-Component"
         title="Add a new component to the XML file"
       >
-        Add Component
+        Eingabe hinzufügen
+      </button>
+      <button
+        type="button"
+        id="fill-addresses"
+        class="button"
+        title="Alle Adress Inputs werden mit Zahlen von 1 aufwärts ausgefüllt"
+      >
+        Nummerieren
       </button>
       <button
         type="button"
@@ -59,7 +81,7 @@
         id="generate-and-display-xml"
         title="Generate and display the XML file"
       >
-        Generate and Display XML
+        XML Erstellen
       </button>
       <button
         type="button"
@@ -68,15 +90,20 @@
         title="Save the XML file to your computer"
         disabled
       >
-        Save XML
+        Datei Speichern
       </button>
     </div>
     <pre id="xml-output"></pre>
     <footer class="footer">
       <p>&copy; 2024 kp.rappo.dev</p>
-      <button id="refresh-button" type="button" class="terms-button">
-        <a href="/">Reset</a>
-      </button>
+      <div class="footer-buttons">
+        <button id="downloads-button" type="button" class="terms-button">
+          <a href="/downloads">Downloads</a>
+        </button>
+        <button id="refresh-button" type="button" class="terms-button">
+          Reset
+        </button>
+      </div>
     </footer>
     <script src="/src/generator/script/script.js"></script>
   </body>
