@@ -39,7 +39,7 @@ const freeComponentY = 22;
 let freeComponentWidth = 300;
 const freeComponentWidthmin = 300;
 const freeComponentAddress = "tOff";
-const version = "0.7.3";
+const version = "0.7.4";
 
 const fillAddressesButton = document.getElementById(
   "fill-addresses"
