@@ -1,5 +1,6 @@
 "use strict";
 var _a;
+let inputsIndex = [0];
 let keyStrokeEvent;
 let backgroundLayer = [];
 let backgroundLayerY = 42;
@@ -13,7 +14,7 @@ const freeComponentY = 22;
 let freeComponentWidth = 300;
 const freeComponentWidthmin = 300;
 const freeComponentAddress = "tOff";
-const version = "0.7.3";
+const version = "0.7.5";
 const fillAddressesButton = document.getElementById("fill-addresses");
 const versionElement = document.getElementById("version");
 const widthInput = document.getElementById("width-input");
@@ -50,12 +51,18 @@ addComponentButton.addEventListener("click", () => {
       <button class="remove-button">Remove</button>
     `;
     (_a = document.querySelector("form")) === null || _a === void 0 ? void 0 : _a.appendChild(newComponentForm);
+    inputsIndex.push(freeComponentCount);
     freeComponentCount++;
     const removeButton = newComponentForm.querySelector(".remove-button");
     if (removeButton) {
         removeButton.addEventListener("click", () => {
+            const addressInput = removeButton.previousElementSibling;
+            const addressNumber = parseInt(addressInput.id.replace("address-", ""), 10);
+            console.log(addressNumber);
+            inputsIndex = inputsIndex.filter((value) => value !== addressNumber);
+            console.log(inputsIndex);
             newComponentForm.remove();
-            freeComponentCount--;
+            // freeComponentCount--;
         });
     }
 });
@@ -87,8 +94,8 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
     let freeCompWidth = freeComponentWidth;
     let freeCompX = freeComponentX;
     freeComponent = [];
-    for (let i = 0; i < freeComponentCount; i++) {
-        const addressInput = document.getElementById(`address-${i}`);
+    inputsIndex.forEach((index) => {
+        const addressInput = document.getElementById(`address-${index}`);
         freeComponent.push({
             comp: freeCompCompValue,
             var: freeCompVarValue,
@@ -103,7 +110,7 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
         freeCompCompValue += 2;
         freeCompVarValue += 2;
         freeCompYValue += 20;
-    }
+    });
     const ratValue = ratInput.value;
     const imageNameValue = imageNameInput.value;
     let xml = `<?xml version="1.0" encoding="UTF-8"?>

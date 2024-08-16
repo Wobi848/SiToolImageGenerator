@@ -23,6 +23,8 @@ interface FreeComponent {
   widthLabel: number;
 }
 
+let inputsIndex:any = [0];
+
 let keyStrokeEvent: KeyEvent;
 let backgroundLayer: BackgroundLayer[] = [];
 let backgroundLayerY = 42;
@@ -39,7 +41,7 @@ const freeComponentY = 22;
 let freeComponentWidth = 300;
 const freeComponentWidthmin = 300;
 const freeComponentAddress = "tOff";
-const version = "0.7.4";
+const version = "0.7.5";
 
 const fillAddressesButton = document.getElementById(
   "fill-addresses"
@@ -91,6 +93,7 @@ addComponentButton.addEventListener("click", () => {
       <button class="remove-button">Remove</button>
     `;
   document.querySelector("form")?.appendChild(newComponentForm);
+  inputsIndex.push(freeComponentCount);
   freeComponentCount++;
 
   const removeButton = newComponentForm.querySelector(
@@ -98,8 +101,13 @@ addComponentButton.addEventListener("click", () => {
   ) as HTMLButtonElement;
   if (removeButton) {
     removeButton.addEventListener("click", () => {
+      const addressInput = removeButton.previousElementSibling as HTMLInputElement;
+      const addressNumber = parseInt(addressInput.id.replace("address-", ""), 10);
+      console.log(addressNumber);
+      inputsIndex = inputsIndex.filter((value: number) => value !== addressNumber);
+      console.log(inputsIndex);
       newComponentForm.remove();
-      freeComponentCount--;
+      // freeComponentCount--;
     });
   }
 });
@@ -138,26 +146,23 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
   let freeCompX = freeComponentX;
 
   freeComponent = [];
-  for (let i = 0; i < freeComponentCount; i++) {
-    const addressInput = document.getElementById(
-      `address-${i}`
-    ) as HTMLInputElement;
-    freeComponent.push({
-      comp: freeCompCompValue,
-      var: freeCompVarValue,
-      x: freeCompX,
-      y: freeCompYValue,
-      width: freeCompWidth,
-      address: addressInput.value,
-      widthElement: freeCompWidth / 2 - 10,
-      xLabel: freeCompWidth / 2 + 5,
-      widthLabel: freeCompWidth / 2 - 10,
-    });
-
-    freeCompCompValue += 2;
-    freeCompVarValue += 2;
-    freeCompYValue += 20;
-  }
+inputsIndex.forEach((index: any) => {
+  const addressInput = document.getElementById(`address-${index}`) as HTMLInputElement;
+  freeComponent.push({
+    comp: freeCompCompValue,
+    var: freeCompVarValue,
+    x: freeCompX,
+    y: freeCompYValue,
+    width: freeCompWidth,
+    address: addressInput.value,
+    widthElement: freeCompWidth / 2 - 10,
+    xLabel: freeCompWidth / 2 + 5,
+    widthLabel: freeCompWidth / 2 - 10,
+  });
+  freeCompCompValue += 2;
+  freeCompVarValue += 2;
+  freeCompYValue += 20;
+});
 
   const ratValue = ratInput.value;
   const imageNameValue = imageNameInput.value;

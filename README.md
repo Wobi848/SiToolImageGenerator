@@ -32,7 +32,11 @@ Si-Tool Image Generator is a simple web application that generates images for Si
 
 * refactor code
 * add rows function
-* add auto numbering function, a lot of objects just use numbers
+* ~~add auto numbering function, a lot of objects just use numbers~~
+
+## Known Bugs
+
+* None currently known. If you encounter any issues, please report them in the issues section of this repository.
 
 ## Contributing
 
