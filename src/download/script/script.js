@@ -35,6 +35,10 @@ const files = [
     { fileName: "SY_MsgOut.editor", url: "/src/download/files/SY_MsgOut.editor.xml", date: "07.08.2024", creator: "RAT" },
     { fileName: "T.editor", url: "/src/download/files/T.editor.xml", date: "07.08.2024", creator: "RAT" },
 ];
+const generatorButton = document.getElementById('generator-button');
+generatorButton === null || generatorButton === void 0 ? void 0 : generatorButton.addEventListener('click', () => {
+    window.location.href = '/downloads';
+});
 const fileListElement = document.getElementById("file-list");
 files.forEach((file) => {
     const listItem = document.createElement("li");
@@ -84,3 +88,4 @@ function downloadFile(file) {
         yield new Promise((resolve) => setTimeout(resolve, 100));
     });
 }
+//# sourceMappingURL=script.js.map

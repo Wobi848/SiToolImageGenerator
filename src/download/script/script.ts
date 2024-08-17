@@ -33,6 +33,12 @@ const files: CustomFile[] = [
   { fileName: "T.editor", url: "/src/download/files/T.editor.xml", date: "07.08.2024", creator: "RAT" },
 ];
 
+const generatorButton = document.getElementById('generator-button');
+
+generatorButton?.addEventListener('click', () => {
+  window.location.href = '/downloads';
+});
+
 const fileListElement = document.getElementById("file-list");
 files.forEach((file) => {
   const listItem = document.createElement("li");

@@ -1,5 +1,6 @@
 "use strict";
 var _a;
+const version = "0.7.7";
 let inputsIndex = [0];
 let keyStrokeEvent;
 let backgroundLayer = [];
@@ -14,7 +15,10 @@ const freeComponentY = 22;
 let freeComponentWidth = 300;
 const freeComponentWidthmin = 300;
 const freeComponentAddress = "tOff";
-const version = "0.7.5";
+const downloadsButton = document.getElementById('downloads-button');
+downloadsButton === null || downloadsButton === void 0 ? void 0 : downloadsButton.addEventListener('click', () => {
+    window.location.href = '/downloads';
+});
 const fillAddressesButton = document.getElementById("fill-addresses");
 const versionElement = document.getElementById("version");
 const widthInput = document.getElementById("width-input");
@@ -241,3 +245,4 @@ document.addEventListener("keydown", (event) => {
         }
     }
 });
+//# sourceMappingURL=script.js.map

@@ -1,3 +1,4 @@
+// import { KeyEvent, BackgroundLayer, FreeComponent } from './interfaces/interfaces';
 interface KeyEvent {
   generate: string;
   save: string;
@@ -22,6 +23,7 @@ interface FreeComponent {
   xLabel: number;
   widthLabel: number;
 }
+const version = "0.7.7";
 
 let inputsIndex:any = [0];
 
@@ -41,7 +43,12 @@ const freeComponentY = 22;
 let freeComponentWidth = 300;
 const freeComponentWidthmin = 300;
 const freeComponentAddress = "tOff";
-const version = "0.7.5";
+
+const downloadsButton = document.getElementById('downloads-button');
+
+downloadsButton?.addEventListener('click', () => {
+  window.location.href = '/downloads';
+});
 
 const fillAddressesButton = document.getElementById(
   "fill-addresses"
