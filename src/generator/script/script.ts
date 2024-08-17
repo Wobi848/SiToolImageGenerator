@@ -23,7 +23,7 @@ interface FreeComponent {
   xLabel: number;
   widthLabel: number;
 }
-const version = "0.7.7";
+const version = "0.7.8";
 
 let inputsIndex:any = [0];
 

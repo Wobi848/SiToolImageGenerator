@@ -36,7 +36,7 @@ const files: CustomFile[] = [
 const generatorButton = document.getElementById('generator-button');
 
 generatorButton?.addEventListener('click', () => {
-  window.location.href = '/downloads';
+  window.location.href = '/';
 });
 
 const fileListElement = document.getElementById("file-list");

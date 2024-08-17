@@ -37,7 +37,7 @@ const files = [
 ];
 const generatorButton = document.getElementById('generator-button');
 generatorButton === null || generatorButton === void 0 ? void 0 : generatorButton.addEventListener('click', () => {
-    window.location.href = '/downloads';
+    window.location.href = '/';
 });
 const fileListElement = document.getElementById("file-list");
 files.forEach((file) => {

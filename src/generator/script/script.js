@@ -1,6 +1,6 @@
 "use strict";
 var _a;
-const version = "0.7.7";
+const version = "0.7.8";
 let inputsIndex = [0];
 let keyStrokeEvent;
 let backgroundLayer = [];
