@@ -26,7 +26,8 @@ form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"],
+input[type="number"] {
   width: 100%;
   max-width: 400px;
   padding: 5px;
@@ -39,7 +40,8 @@ input[type="text"], input[type="number"] {
   color: #fff;
 }
 
-input[type="text"]:focus, input[type="number"]:focus {
+input[type="text"]:focus,
+input[type="number"]:focus {
   border-color: #777;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -59,7 +61,7 @@ input[type="text"]:focus, input[type="number"]:focus {
   display: block;
   margin: 0 auto;
   box-sizing: border-box;
-  
+
   border: 1px solid #333;
   background-color: #444;
   border-radius: 5px;
@@ -99,4 +101,104 @@ input[type="text"]:focus, input[type="number"]:focus {
 .button:hover .tooltip {
   visibility: visible;
   opacity: 1;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #222; /* dark background color */
+  padding: 20px; /* increased padding for a wider popup */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: none; /* hide the popup by default */
+  max-width: 400px; /* set a fixed width for the popup */
+  width: 95%; /* make the popup take the full width of its container */
+  overflow-y: auto; /* add this line */
+  max-height: 80vh; /* set a maximum height for the popup */
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.popup form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup label {
+  margin-bottom: 2px; /* reduced margin */
+  color: #fff;
+}
+
+.popup input[type="text"] {
+  width: 100%;
+  padding: 5px; /* reduced padding */
+  margin-bottom: 2px; /* reduced margin */
+  border: 1px solid #ccc;
+}
+
+.popup button[type="button"] {
+  width: 100%;
+  padding: 5px; /* reduced padding */
+  margin-top: 10px; /* reduced margin */
+  border: none;
+  border-radius: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.popup button[type="button"]:hover {
+  background-color: #3e8e41;
+}
+
+.popup h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #d0d0d0;
+}
+
+.popup-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.popup-input label {
+  color: #aaaaaa;
+  font-weight: bold;
+  margin-right: 10px;
+  width: 120px; /* adjust the width to fit your needs */
+  text-align: right;
+}
+
+.popup-input .alt-text {
+  font-size: 12px;
+  color: #666;
+  margin-right: 5px;
+}
+
+.popup-input input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100px; /* adjust the width to fit your needs */
+}
+
+.close-popup {
+  font-size: 18px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close-popup:hover {
+  color: #aaa;
 }

@@ -23,9 +23,9 @@ interface FreeComponent {
   xLabel: number;
   widthLabel: number;
 }
-const version = "0.7.8";
+const version = "0.7.9";
 
-let inputsIndex:any = [0];
+let inputsIndex: any = [0];
 
 let keyStrokeEvent: KeyEvent;
 let backgroundLayer: BackgroundLayer[] = [];
@@ -44,10 +44,23 @@ let freeComponentWidth = 300;
 const freeComponentWidthmin = 300;
 const freeComponentAddress = "tOff";
 
-const downloadsButton = document.getElementById('downloads-button');
+// PopUp
 
-downloadsButton?.addEventListener('click', () => {
-  window.location.href = '/downloads';
+document.querySelector('.close-popup')?.addEventListener('click', function() {
+  document.getElementById('settings-popup')!.style.display = 'none';
+});
+
+const settingsButton = document.getElementById("settings-button");
+settingsButton!.addEventListener("click", () => {
+  const settingsPopup = document.getElementById("settings-popup");
+  settingsPopup!.style.display =
+    getComputedStyle(settingsPopup!).display === "none" ? "block" : "none";
+  if (!settingsPopup) console.error("Settings popup element not found");
+});
+
+const downloadsButton = document.getElementById("downloads-button");
+downloadsButton?.addEventListener("click", () => {
+  window.location.href = "/downloads";
 });
 
 const fillAddressesButton = document.getElementById(
@@ -108,10 +121,16 @@ addComponentButton.addEventListener("click", () => {
   ) as HTMLButtonElement;
   if (removeButton) {
     removeButton.addEventListener("click", () => {
-      const addressInput = removeButton.previousElementSibling as HTMLInputElement;
-      const addressNumber = parseInt(addressInput.id.replace("address-", ""), 10);
+      const addressInput =
+        removeButton.previousElementSibling as HTMLInputElement;
+      const addressNumber = parseInt(
+        addressInput.id.replace("address-", ""),
+        10
+      );
       console.log(addressNumber);
-      inputsIndex = inputsIndex.filter((value: number) => value !== addressNumber);
+      inputsIndex = inputsIndex.filter(
+        (value: number) => value !== addressNumber
+      );
       console.log(inputsIndex);
       newComponentForm.remove();
       // freeComponentCount--;
@@ -153,23 +172,25 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
   let freeCompX = freeComponentX;
 
   freeComponent = [];
-inputsIndex.forEach((index: any) => {
-  const addressInput = document.getElementById(`address-${index}`) as HTMLInputElement;
-  freeComponent.push({
-    comp: freeCompCompValue,
-    var: freeCompVarValue,
-    x: freeCompX,
-    y: freeCompYValue,
-    width: freeCompWidth,
-    address: addressInput.value,
-    widthElement: freeCompWidth / 2 - 10,
-    xLabel: freeCompWidth / 2 + 5,
-    widthLabel: freeCompWidth / 2 - 10,
+  inputsIndex.forEach((index: any) => {
+    const addressInput = document.getElementById(
+      `address-${index}`
+    ) as HTMLInputElement;
+    freeComponent.push({
+      comp: freeCompCompValue,
+      var: freeCompVarValue,
+      x: freeCompX,
+      y: freeCompYValue,
+      width: freeCompWidth,
+      address: addressInput.value,
+      widthElement: freeCompWidth / 2 - 10,
+      xLabel: freeCompWidth / 2 + 5,
+      widthLabel: freeCompWidth / 2 - 10,
+    });
+    freeCompCompValue += 2;
+    freeCompVarValue += 2;
+    freeCompYValue += 20;
   });
-  freeCompCompValue += 2;
-  freeCompVarValue += 2;
-  freeCompYValue += 20;
-});
 
   const ratValue = ratInput.value;
   const imageNameValue = imageNameInput.value;
@@ -279,21 +300,7 @@ keyStrokeEvent = {
 };
 
 // Update Tooltips
-document.getElementById(
-  "add-Component"
-)!.title = `Neu Adressen-Eingabe erstellen. (Alt + ${keyStrokeEvent.addButton.toUpperCase()})`;
-document.getElementById(
-  "generate-and-display-xml"
-)!.title = `XML Erstellen und Anzeigen. (Alt + ${keyStrokeEvent.generate.toUpperCase()})`;
-document.getElementById(
-  "save-xml"
-)!.title = `XML Datei speichern. (Alt + ${keyStrokeEvent.save.toUpperCase()})`;
-document.getElementById(
-  "refresh-button"
-)!.title = `Zurücksetzen der Seite. (Alt + ${keyStrokeEvent.reset.toUpperCase()})`;
-document.getElementById(
-  "fill-addresses"
-)!.title = `Alle Adress-Eingaben werden mit Zahlen von 1 aufwärts ausgefüllt. (Alt + ${keyStrokeEvent.fillAddresses.toUpperCase()})`;
+updateTooltips();
 
 document.addEventListener("keydown", (event) => {
   if (event.altKey) {
@@ -326,3 +333,82 @@ document.addEventListener("keydown", (event) => {
     }
   }
 });
+
+// Hotkeys Settings
+
+// Get the input fields from the settings popup
+const generateHotkeyInput = document.getElementById(
+  "generate-hotkey"
+) as HTMLInputElement;
+const saveHotkeyInput = document.getElementById(
+  "save-hotkey"
+) as HTMLInputElement;
+const resetHotkeyInput = document.getElementById(
+  "reset-hotkey"
+) as HTMLInputElement;
+const addButtonHotkeyInput = document.getElementById(
+  "add-button-hotkey"
+) as HTMLInputElement;
+const removeButtonHotkeyInput = document.getElementById(
+  "remove-button-hotkey"
+) as HTMLInputElement;
+const fillAddressesHotkeyInput = document.getElementById(
+  "fill-addresses-hotkey"
+) as HTMLInputElement;
+
+// Add event listener to save settings button
+document.getElementById("save-settings")?.addEventListener("click", () => {
+  // Update the keyStrokeEvent object with the new hotkey values
+  if (generateHotkeyInput) keyStrokeEvent.generate = generateHotkeyInput.value;
+  if (saveHotkeyInput) keyStrokeEvent.save = saveHotkeyInput.value;
+  if (resetHotkeyInput) keyStrokeEvent.reset = resetHotkeyInput.value;
+  if (addButtonHotkeyInput)
+    keyStrokeEvent.addButton = addButtonHotkeyInput.value;
+  if (removeButtonHotkeyInput)
+    keyStrokeEvent.removeButton = removeButtonHotkeyInput.value;
+  if (fillAddressesHotkeyInput)
+    keyStrokeEvent.fillAddresses = fillAddressesHotkeyInput.value;
+
+  // Save the updated keyStrokeEvent object to local storage
+  localStorage.setItem("keyStrokeEvent", JSON.stringify(keyStrokeEvent));
+
+  // Update Tooltips
+  updateTooltips();
+  // Close the popup
+  const settingsPopup = document.getElementById("settings-popup");
+  if (settingsPopup) {
+    settingsPopup.style.display = "none";
+  }
+});
+
+// Load the saved keyStrokeEvent object from local storage on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const storedKeyStrokeEvent = localStorage.getItem("keyStrokeEvent");
+  if (storedKeyStrokeEvent) {
+    keyStrokeEvent = JSON.parse(storedKeyStrokeEvent);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const storedKeyStrokeEvent = localStorage.getItem("keyStrokeEvent");
+  if (storedKeyStrokeEvent) {
+    keyStrokeEvent = JSON.parse(storedKeyStrokeEvent);
+    // Update the input fields with the saved values
+    generateHotkeyInput.value = keyStrokeEvent.generate;
+    saveHotkeyInput.value = keyStrokeEvent.save;
+    resetHotkeyInput.value = keyStrokeEvent.reset;
+    addButtonHotkeyInput.value = keyStrokeEvent.addButton;
+    removeButtonHotkeyInput.value = keyStrokeEvent.removeButton;
+    fillAddressesHotkeyInput.value = keyStrokeEvent.fillAddresses;
+  }
+
+  updateTooltips();
+});
+
+function updateTooltips() {
+  document.getElementById("add-Component")!.title = `Neu Adressen-Eingabe erstellen. (Alt + ${keyStrokeEvent.addButton.toUpperCase()})`;
+  document.getElementById("generate-and-display-xml")!.title = `XML Erstellen und Anzeigen. (Alt + ${keyStrokeEvent.generate.toUpperCase()})`;
+  document.getElementById("save-xml")!.title = `XML Datei speichern. (Alt + ${keyStrokeEvent.save.toUpperCase()})`;
+  document.getElementById("refresh-button")!.title = `Zurücksetzen der Seite. (Alt + ${keyStrokeEvent.reset.toUpperCase()})`;
+  document.getElementById("fill-addresses")!.title = `Alle Adress-Eingaben werden mit Zahlen von 1 aufwärts ausgefüllt. (Alt + ${keyStrokeEvent.fillAddresses.toUpperCase()})`;
+}

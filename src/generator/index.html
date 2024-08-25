@@ -109,8 +109,55 @@
         <button id="refresh-button" type="button" class="terms-button">
           Reset
         </button>
+        <button id="settings-button" type="button" class="terms-button">
+          Einstellungen
+        </button>
       </div>
     </footer>
+  </div>
+  <div class="popup" id="settings-popup">
+    <h2>Einstellungen <span class="close-popup">×</span></h2>
+    <form>
+      <h3>Hotkeys</h3>
+      <div class="popup-input">
+        <label>XML Erstellen:</label>
+        <span class="alt-text">Alt +</span>
+        <input type="text" id="generate-hotkey" value="g" />
+      </div>
+      <br />
+      <div class="popup-input">
+        <label>Datei Speichern:</label>
+        <span class="alt-text">Alt +</span>
+        <input type="text" id="save-hotkey" value="s" />
+      </div>
+      <br />
+      <div class="popup-input">
+        <label>Zurücksetzen:</label>
+        <span class="alt-text">Alt +</span>
+        <input type="text" id="reset-hotkey" value="t" />
+      </div>
+      <br />
+      <div class="popup-input">
+        <label>Neu Adressen-Eingabe:</label>
+        <span class="alt-text">Alt +</span>
+        <input type="text" id="add-button-hotkey" value="a" />
+      </div>
+      <br />
+      <div class="popup-input">
+        <label>Entfernen:</label>
+        <span class="alt-text">Alt +</span>
+        <input type="text" id="remove-button-hotkey" value="y" />
+      </div>
+      <br />
+      <div class="popup-input">
+        <label>Adressen Ausfüllen:</label>
+        <span class="alt-text">Alt +</span>
+        <input type="text" id="fill-addresses-hotkey" value="v" />
+      </div>
+      <br />
+      <button type="button" id="save-settings">Speichern</button>
+    </form>
+  </div>
     <script src="/src/generator/script/script.js"></script>
   </body>
 </html>
