@@ -1,7 +1,41 @@
-/* Forms */
+/* NAV */
+.sidebar-button-container {
+  position: sticky;
+  top: 10px;
+  height: 200px;
+}
 
-form > div {
-  margin-bottom: 0px;
+.sidebar-button {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-button:hover {
+  background-color: #444;
+}
+
+.sidebar-button i {
+  font-size: 18px;
+}
+/* Forms */
+.container {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
 }
 
 form > div > input[type="text"] {
@@ -9,21 +43,21 @@ form > div > input[type="text"] {
 }
 
 form > div > input[type="number"] {
-  width: calc(100% - 115px);
+  width: calc(100% - 130px);
 }
 
 /* Input Styles */
-
 form {
   display: block;
   box-sizing: border-box;
-  margin: 5px auto;
-  max-width: 400px;
+  margin: 0 auto;
   padding: 15px;
   background-color: #333;
   border: 1px solid #555;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  width: 90%;
 }
 
 input[type="text"],
@@ -68,7 +102,7 @@ input[type="number"]:focus {
   color: #fff;
   overflow-y: auto;
   overflow-x: auto;
-  margin-top: 5px;
+  margin-top: 50px;
   max-height: 90vh;
   max-width: calc(100% - 30px);
   padding: 15px;
@@ -84,7 +118,7 @@ input[type="number"]:focus {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  transition: opacity 0.2s; /* added transition */
+  transition: opacity 0.2s;
 }
 
 .tooltip::after {

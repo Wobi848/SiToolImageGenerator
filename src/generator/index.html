@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Rappo.dev Website, Service-Tool Image Generator."
-    />
-    <meta name="robots" content="index, nofollow" />
-    <title>K&P Service-Tool Image Generator</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/fav/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/fav/favicon-16x16.png" />
-    <link rel="manifest" href="/assets/img/fav/site.webmanifest" />
-    <link rel="mask-icon" href="/assets/img/fav/safari-pinned-tab.svg" color="#5bbad5" />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="stylesheet" href="/src/global-styles/base.css" />
-    <link rel="stylesheet" href="/src/generator/style/components.css" />
-    <link rel="stylesheet" href="/src/generator/style/buttons.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-  </head>
-  <body class="animated-background">
-    <header>
-      <h1>K&P Service-Tool Bilder Generator <span id="version"></span></h1>
-      <div>
-        <a
-          href="https://github.com/Wobi848/SiToolImageGenerator"
-          target="_blank"
-          class="github-button"
-          aria-label="A Link to Github Repository"
-        >
-          <i class="fab fa-github fa-circle" alt="Github-Logo"></i>
-        </a>
-      </div>
-    </header>
-    <!--
-    <a href="/downloads" class="download-button download-tooltip">
-      <i class="fas fa-cloud-download-alt"></i>
-    </a>
-    -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rappo.dev Website, Service-Tool Image Generator." />
+  <meta name="robots" content="index, nofollow" />
+  <title>K&P Service-Tool Image Generator</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/fav/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/fav/favicon-16x16.png" />
+  <link rel="manifest" href="/assets/img/fav/site.webmanifest" />
+  <link rel="mask-icon" href="/assets/img/fav/safari-pinned-tab.svg" color="#5bbad5" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="/src/global-styles/base.css" />
+  <link rel="stylesheet" href="/src/generator/style/components.css" />
+  <link rel="stylesheet" href="/src/generator/style/buttons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body class="animated-background">
+  <header>
+    <h1>K&P Service-Tool Bilder Generator <span id="version"></span></h1>
+    <div>
+      <a href="https://github.com/Wobi848/SiToolImageGenerator" target="_blank" class="github-button"
+        aria-label="A Link to Github Repository">
+        <i class="fab fa-github fa-circle" alt="Github-Logo"></i>
+      </a>
+    </div>
+  </header>
+  <div class="container">
+    <div class="sidebar-button-container">
+      <button type="button" class="sidebar-button" id="add-Component" title="">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button type="button" class="sidebar-button" id="fill-addresses" title="">
+        <i class="fas fa-list-ol"></i>
+      </button>
+      <button type="button" class="sidebar-button" id="generate-and-display-xml" title="">
+        <i class="fas fa-file-code"></i>
+      </button>
+      <button type="button" class="sidebar-button" id="save-xml" title="" disabled>
+        <i class="fas fa-download"></i>
+      </button>
+    </div>
     <form>
       <div>
         <input type="text" id="rat-input" placeholder="Ersteller" />
@@ -51,69 +53,29 @@
         <input type="text" id="imagename-input" placeholder="Objekt Name" />
       </div>
       <div>
-        <input
-          type="number"
-          id="width-input"
-          value="300"
-          placeholder="Breite"
-          min="300"
-        />
+        <input type="number" id="width-input" value="300" placeholder="Breite" min="300" />
         <span class="unit">px</span>
       </div>
       <div>
         <input type="text" id="address-0" placeholder="Adresse" />
       </div>
     </form>
-    <div class="button-container">
-      <button
-        type="button"
-        class="button"
-        id="add-Component"
-        title="Add a new component to the XML file"
-      >
-        Eingabe hinzufügen
+  </div>
+  <pre id="xml-output"></pre>
+  <footer class="footer">
+    <p>&copy; 2024 kp.rappo.dev</p>
+    <div class="footer-buttons">
+      <button id="downloads-button" type="button" class="terms-button">
+        Downloads
       </button>
-      <button
-        type="button"
-        id="fill-addresses"
-        class="button"
-        title="Alle Adress Inputs werden mit Zahlen von 1 aufwärts ausgefüllt"
-      >
-        Nummerieren
+      <button id="refresh-button" type="button" class="terms-button">
+        Reset
       </button>
-      <button
-        type="button"
-        class="button"
-        id="generate-and-display-xml"
-        title="Generate and display the XML file"
-      >
-        XML Erstellen
-      </button>
-      <button
-        type="button"
-        class="button"
-        id="save-xml"
-        title="Save the XML file to your computer"
-        disabled
-      >
-        Datei Speichern
+      <button id="settings-button" type="button" class="terms-button">
+        Einstellungen
       </button>
     </div>
-    <pre id="xml-output"></pre>
-    <footer class="footer">
-      <p>&copy; 2024 kp.rappo.dev</p>
-      <div class="footer-buttons">
-        <button id="downloads-button" type="button" class="terms-button">
-          Downloads
-        </button>
-        <button id="refresh-button" type="button" class="terms-button">
-          Reset
-        </button>
-        <button id="settings-button" type="button" class="terms-button">
-          Einstellungen
-        </button>
-      </div>
-    </footer>
+  </footer>
   </div>
   <div class="popup" id="settings-popup">
     <h2>Einstellungen <span class="close-popup">×</span></h2>
@@ -158,6 +120,11 @@
       <button type="button" id="save-settings">Speichern</button>
     </form>
   </div>
-    <script src="/src/generator/script/script.js"></script>
-  </body>
+  <script src="/src/generator/script/main.js"></script>
+  <script src="/src/generator/script/interfaces/interfaces.js"></script>
+  <script src="/src/generator/script/components/buttons.js"></script>
+  <script src="/src/generator/script/components/keyboard-events.js"></script>
+  <script src="/src/generator/script/components/xml-generator.js"></script>
+</body>
+
 </html>
