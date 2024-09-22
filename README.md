@@ -19,14 +19,14 @@ Si-Tool Image Generator is a simple web application that generates images for Si
 
 ### Usage
 
-* Website is hosted on `https://kp.rappo.dev` and will use this git for its content
+* Website is hosted on `https://kp.rappo.dev` and will use this git.
 * Open a web browser and navigate to `https://kp.rappo.dev` to check it out.
 * You can also use the `npm run build` command to build the application for personal use.
 
 ## Features
 
 * Generates images for Si-Tool
-* Provides a download side to download pre created xml files
+* Provides a download side to download pre created editor.xml files
 
 ## To-Do
 

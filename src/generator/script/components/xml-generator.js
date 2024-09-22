@@ -2,7 +2,7 @@
 const xmlOutput = document.getElementById("xml-output");
 // XML Display Name
 const fileNameElement = document.getElementById("fileName");
-imageNameInput.addEventListener('input', () => {
+imageNameInput.addEventListener("input", () => {
     if (imageNameInput.value != "") {
         const fileName = `${imageNameInput.value}.editor.xml`;
         if (fileNameElement)
@@ -10,7 +10,7 @@ imageNameInput.addEventListener('input', () => {
     }
     else {
         if (fileNameElement)
-            fileNameElement.innerText = 'XML';
+            fileNameElement.innerText = "XML";
     }
 });
 // Add event listener to the generate and display button
@@ -28,6 +28,12 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
         });
         backgrundLayerYValue += 40;
     }
+    // Check ComponentWidth
+    let ComponentWidthRest = componentWidthRest(freeComponentWidth);
+    freeComponentWidth -= ComponentWidthRest;
+    widthInput.value = `${freeComponentWidth}`;
+    if (debug)
+        console.log("freeComponentWidth " + freeComponentWidth);
     // ImageTemplate
     let imageTemplateWidth = freeComponentRows * freeComponentWidth + 200;
     let imageStructurTitle = freeComponentRows * freeComponentWidth - 100;
@@ -131,4 +137,10 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
     xmlOutput.innerText = xml;
     saveXmlButton.disabled = false;
 });
+function componentWidthRest(number, divider = 2) {
+    let rest = number % divider;
+    if (debug)
+        console.log("Number " + number + " Divider " + divider + " Rest " + rest);
+    return rest;
+}
 //# sourceMappingURL=xml-generator.js.map
