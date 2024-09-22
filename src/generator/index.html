@@ -83,6 +83,18 @@
   <div class="popup" id="settings-popup">
     <h2>Einstellungen <span class="close-popup">×</span></h2>
     <form>
+      <h3>Generator</h3>
+      <div class="popup-input">
+        <label>Stadart Name:</label>
+        <span class="alt-text"></span>
+        <input type="text" id="name-setting"  value="UNK" placeholder="Name"/>
+      </div>
+      <div class="popup-input">
+        <label>Stadart Breite:</label>
+        <span class="alt-text"></span>
+        <input type="number" id="width-setting"  value="300" placeholder="Breite" min="300" />
+      </div>
+      <br />
       <h3>Hotkeys</h3>
       <div class="popup-input">
         <label>XML Erstellen:</label>
@@ -127,6 +139,7 @@
   <script src="/src/generator/script/interfaces/interfaces.js"></script>
   <script src="/src/generator/script/components/buttons.js"></script>
   <script src="/src/generator/script/components/keyboard-events.js"></script>
+  <script src="/src/generator/script/components/settings.js"></script>
   <script src="/src/generator/script/components/xml-generator.js"></script>
 </body>
 

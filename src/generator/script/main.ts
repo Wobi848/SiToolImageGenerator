@@ -1,6 +1,6 @@
 // Version
 const debug: boolean = false;
-const version = "0.7.12";
+const version = "0.7.13";
 const versionElement = document.getElementById("version");
 if (versionElement) versionElement.innerText = `v${version}`;
 

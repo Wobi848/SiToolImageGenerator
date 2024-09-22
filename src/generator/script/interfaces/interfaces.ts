@@ -7,6 +7,11 @@ interface KeyEvent {
     fillAddresses: string;
   }
   
+  interface BasicSettings {
+    name: string;
+    width: number;
+  }
+
   interface BackgroundLayer {
     y: number;
   }

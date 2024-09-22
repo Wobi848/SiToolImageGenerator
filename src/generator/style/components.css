@@ -1,5 +1,3 @@
-
-
 /* Forms */
 .container {
   display: grid;
@@ -62,7 +60,7 @@ input[type="number"]:focus {
 .xml-title {
   font-size: 0.8em;
   font-weight: bold;
-  color: #FFA07A; /* light orange color */
+  color: #ffa07a; /* light orange color */
   margin-bottom: 0.1em; /* reduce the margin to 0.1em */
   padding: 15px;
   padding-bottom: 0px;
@@ -150,7 +148,8 @@ input[type="number"]:focus {
   color: #fff;
 }
 
-.popup input[type="text"] {
+.popup input[type="text"],
+input[type="number"] {
   width: 100%;
   padding: 5px; /* reduced padding */
   margin-bottom: 2px; /* reduced margin */

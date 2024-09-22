@@ -45,7 +45,6 @@ document.addEventListener("keydown", (event) => {
 });
 
 // Hotkeys Settings
-
 const generateHotkeyInput = document.getElementById(
   "generate-hotkey"
 ) as HTMLInputElement;
@@ -64,50 +63,6 @@ const removeButtonHotkeyInput = document.getElementById(
 const fillAddressesHotkeyInput = document.getElementById(
   "fill-addresses-hotkey"
 ) as HTMLInputElement;
-
-document.getElementById("save-settings")?.addEventListener("click", () => {
-  // Update the keyStrokeEvent object with the new hotkey values
-  if (generateHotkeyInput) keyStrokeEvent.generate = generateHotkeyInput.value;
-  if (saveHotkeyInput) keyStrokeEvent.save = saveHotkeyInput.value;
-  if (resetHotkeyInput) keyStrokeEvent.reset = resetHotkeyInput.value;
-  if (addButtonHotkeyInput)
-    keyStrokeEvent.addButton = addButtonHotkeyInput.value;
-  if (removeButtonHotkeyInput)
-    keyStrokeEvent.removeButton = removeButtonHotkeyInput.value;
-  if (fillAddressesHotkeyInput)
-    keyStrokeEvent.fillAddresses = fillAddressesHotkeyInput.value;
-
-  localStorage.setItem("keyStrokeEvent", JSON.stringify(keyStrokeEvent));
-
-  updateTooltips();
-
-  const settingsPopup = document.getElementById("settings-popup");
-  if (settingsPopup) {
-    settingsPopup.style.display = "none";
-  }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const storedKeyStrokeEvent = localStorage.getItem("keyStrokeEvent");
-  if (storedKeyStrokeEvent) {
-    keyStrokeEvent = JSON.parse(storedKeyStrokeEvent);
-  }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const storedKeyStrokeEvent = localStorage.getItem("keyStrokeEvent");
-  if (storedKeyStrokeEvent) {
-    keyStrokeEvent = JSON.parse(storedKeyStrokeEvent);
-    generateHotkeyInput.value = keyStrokeEvent.generate;
-    saveHotkeyInput.value = keyStrokeEvent.save;
-    resetHotkeyInput.value = keyStrokeEvent.reset;
-    addButtonHotkeyInput.value = keyStrokeEvent.addButton;
-    removeButtonHotkeyInput.value = keyStrokeEvent.removeButton;
-    fillAddressesHotkeyInput.value = keyStrokeEvent.fillAddresses;
-  }
-
-  updateTooltips();
-});
 
 function updateTooltips() {
   document.getElementById(
