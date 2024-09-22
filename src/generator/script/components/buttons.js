@@ -15,7 +15,7 @@ function closePopUp() {
     document.getElementById("settings-popup").style.display = "none";
 }
 // XML Handling Buttons
-// Fill Inputs w Numbers
+// Fill Inputs with Numbers
 const fillAddressesButton = document.getElementById("fill-addresses");
 fillAddressesButton.addEventListener("click", () => {
     const addressInputs = document.querySelectorAll('input[id^="address-"]');
@@ -52,9 +52,11 @@ addComponentButton.addEventListener("click", () => {
         removeButton.addEventListener("click", () => {
             const addressInput = removeButton.previousElementSibling;
             const addressNumber = parseInt(addressInput.id.replace("address-", ""), 10);
-            console.log(addressNumber);
+            if (debug)
+                console.log(addressNumber);
             inputsIndex = inputsIndex.filter((value) => value !== addressNumber);
-            console.log(inputsIndex);
+            if (debug)
+                console.log(inputsIndex);
             newComponentForm.remove();
         });
     }

@@ -1,37 +1,9 @@
-/* NAV */
-.sidebar-button-container {
-  position: sticky;
-  top: 10px;
-  height: 200px;
-}
 
-.sidebar-button {
-  margin-bottom: 10px;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
-  cursor: pointer;
-  font-size: 16px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.sidebar-button:hover {
-  background-color: #444;
-}
-
-.sidebar-button i {
-  font-size: 18px;
-}
 /* Forms */
 .container {
   display: grid;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: 25px 1fr;
   gap: 10px;
   max-width: 600px;
   margin: 0 auto;
@@ -87,6 +59,15 @@ input[type="number"]:focus {
 }
 
 /* Miscellaneous */
+.xml-title {
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #FFA07A; /* light orange color */
+  margin-bottom: 0.1em; /* reduce the margin to 0.1em */
+  padding: 15px;
+  padding-bottom: 0px;
+  display: inline-block; /* make the span an inline-block element to control its margin */
+}
 
 #xml-output {
   white-space: pre;
@@ -102,7 +83,7 @@ input[type="number"]:focus {
   color: #fff;
   overflow-y: auto;
   overflow-x: auto;
-  margin-top: 50px;
+  margin-top: 10px;
   max-height: 90vh;
   max-width: calc(100% - 30px);
   padding: 15px;

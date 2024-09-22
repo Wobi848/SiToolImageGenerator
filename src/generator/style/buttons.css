@@ -1,28 +1,40 @@
 /* Buttons */
+/* NAV */
+.sidebar-button-container {
+  position: sticky;
+  top: 10px;
+  height: 200px;
+  padding: 5px;
+}
 
-.button {
-  background-color: #666; /* Dark gray background */
+.sidebar-button {
+  margin-bottom: 10px;
+  padding: 5px;
   border: none;
   border-radius: 5px;
-  color: #fff; /* White text */
+  background-color: #333;
+  color: #fff;
   cursor: pointer;
-  margin: 5px;
-  padding: 10px 20px;
-}
-
-.button-container {
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
-.button:disabled {
+.sidebar-button:hover {
+  background-color: #444;
+}
+
+.sidebar-button i {
+  font-size: 18px;
+}
+
+.sidebar-button:disabled {
+  color: #555;
   background-color: #333; /* Dark gray background when disabled */
   cursor: not-allowed;
-}
-
-.button:hover {
-  background-color: #555; /* Darker gray background on hover */
 }
 
 .download-button {

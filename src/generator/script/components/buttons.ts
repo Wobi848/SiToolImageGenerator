@@ -16,7 +16,7 @@ function closePopUp() {
 }
 
 // XML Handling Buttons
-// Fill Inputs w Numbers
+// Fill Inputs with Numbers
 const fillAddressesButton = document.getElementById(
   "fill-addresses"
 ) as HTMLButtonElement;
@@ -68,15 +68,14 @@ addComponentButton.addEventListener("click", () => {
         addressInput.id.replace("address-", ""),
         10
       );
-      console.log(addressNumber);
+      if (debug) console.log(addressNumber);
       inputsIndex = inputsIndex.filter(
         (value: number) => value !== addressNumber
       );
-      console.log(inputsIndex);
+      if (debug) console.log(inputsIndex);
       newComponentForm.remove();
     });
   }
-
 });
 
 // Refresh Page

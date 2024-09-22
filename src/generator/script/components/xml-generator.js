@@ -1,5 +1,18 @@
 "use strict";
 const xmlOutput = document.getElementById("xml-output");
+// XML Display Name
+const fileNameElement = document.getElementById("fileName");
+imageNameInput.addEventListener('input', () => {
+    if (imageNameInput.value != "") {
+        const fileName = `${imageNameInput.value}.editor.xml`;
+        if (fileNameElement)
+            fileNameElement.innerText = `${fileName}`;
+    }
+    else {
+        if (fileNameElement)
+            fileNameElement.innerText = 'XML';
+    }
+});
 // Add event listener to the generate and display button
 generateAndDisplayXmlButton.addEventListener("click", (event) => {
     event.preventDefault(); // Prevent the form from submitting

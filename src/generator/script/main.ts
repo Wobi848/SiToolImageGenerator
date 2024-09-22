@@ -1,9 +1,15 @@
 // Version
-const version = "0.7.10";
+const debug: boolean = false;
+const version = "0.7.11";
 const versionElement = document.getElementById("version");
 if (versionElement) versionElement.innerText = `v${version}`;
 
-console.log(`v${version} - Alle anregungen an t.rappo@kieback-peter.ch`);
+console.log(
+  `%cv${version} %c- Alle anregungen an %ct.rappo@kieback-peter.ch`,
+  "color: yellow; font-weight:bold",
+  "color: white; font-weight:bold",
+  "color: orange; font-weight:bold"
+);
 
 // XML Variables
 let inputsIndex: any = [0];
