@@ -1,8 +1,10 @@
 // Version
-const debug: boolean = false;
-const version = "0.7.13";
+const debug: boolean = true;
+const version = "0.7.14";
 const versionElement = document.getElementById("version");
 if (versionElement) versionElement.innerText = `v${version}`;
+
+console.log('debugOn');
 
 console.log(
   `%cv${version} %c- Alle anregungen an %ct.rappo@kieback-peter.ch`,
@@ -18,6 +20,7 @@ let backgroundLayerY = 42;
 let freeComponent: FreeComponent[] = [];
 let freeComponentCount = 1;
 let freeComponentRows = 1;
+let actualFreeComponentsCount = 1;
 const freeComponentComp = 268;
 const freeComponentVar = 153231;
 const freeComponentX = 0;

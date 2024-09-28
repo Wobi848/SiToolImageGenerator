@@ -57,6 +57,8 @@ addComponentButton.addEventListener("click", () => {
   inputsIndex.push(freeComponentCount);
   freeComponentCount++;
 
+  setActualFreeComponentsCount();
+
   const removeButton = newComponentForm.querySelector(
     ".remove-button"
   ) as HTMLButtonElement;
@@ -68,14 +70,16 @@ addComponentButton.addEventListener("click", () => {
         addressInput.id.replace("address-", ""),
         10
       );
-      if (debug) console.log(addressNumber);
       inputsIndex = inputsIndex.filter(
         (value: number) => value !== addressNumber
       );
-      if (debug) console.log(inputsIndex);
+      // if (debug) console.log(inputsIndex); // show Input array
       newComponentForm.remove();
+      setActualFreeComponentsCount();
     });
   }
+
+  
 });
 
 // Refresh Page
@@ -97,3 +101,9 @@ downloadsButton?.addEventListener("click", () => {
 const generateAndDisplayXmlButton = document.getElementById(
   "generate-and-display-xml"
 ) as HTMLButtonElement;
+
+
+function setActualFreeComponentsCount() {
+  actualFreeComponentsCount = inputsIndex.length;
+  if (debug) console.log("actualFreeComponentsCount " + actualFreeComponentsCount)
+}

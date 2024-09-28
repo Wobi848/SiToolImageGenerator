@@ -17,7 +17,7 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
   // Create the XML string
   // Create Background for readability
   backgroundLayer = [];
-  let backgroundLayerCount = Math.floor(freeComponentCount / 2);
+  let backgroundLayerCount = Math.floor(actualFreeComponentsCount / 2); // Testing
   let backgrundLayerYValue = backgroundLayerY;
 
   for (let i = 0; i < backgroundLayerCount; i++) {

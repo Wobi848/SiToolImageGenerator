@@ -47,17 +47,16 @@ addComponentButton.addEventListener("click", () => {
     (_a = document.querySelector("form")) === null || _a === void 0 ? void 0 : _a.appendChild(newComponentForm);
     inputsIndex.push(freeComponentCount);
     freeComponentCount++;
+    setActualFreeComponentsCount();
     const removeButton = newComponentForm.querySelector(".remove-button");
     if (removeButton) {
         removeButton.addEventListener("click", () => {
             const addressInput = removeButton.previousElementSibling;
             const addressNumber = parseInt(addressInput.id.replace("address-", ""), 10);
-            if (debug)
-                console.log(addressNumber);
             inputsIndex = inputsIndex.filter((value) => value !== addressNumber);
-            if (debug)
-                console.log(inputsIndex);
+            // if (debug) console.log(inputsIndex); // show Input array
             newComponentForm.remove();
+            setActualFreeComponentsCount();
         });
     }
 });
@@ -74,4 +73,9 @@ downloadsButton === null || downloadsButton === void 0 ? void 0 : downloadsButto
 });
 // Generate XML
 const generateAndDisplayXmlButton = document.getElementById("generate-and-display-xml");
+function setActualFreeComponentsCount() {
+    actualFreeComponentsCount = inputsIndex.length;
+    if (debug)
+        console.log("actualFreeComponentsCount " + actualFreeComponentsCount);
+}
 //# sourceMappingURL=buttons.js.map
