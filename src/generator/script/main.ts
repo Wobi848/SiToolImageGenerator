@@ -1,11 +1,22 @@
 // Version
-const debug: boolean = true;
-const version = "0.7.14";
+const version = "0.7.15";
 const versionElement = document.getElementById("version");
 if (versionElement) versionElement.innerText = `v${version}`;
 
-console.log('debugOn');
+/* DEBUG */
+let debug: boolean = true;
 
+// Domain
+let domain_name = document.location.hostname;
+console.log(domain_name);
+
+if (domain_name == 'kp.rappo.dev') {
+  debug = false;
+}
+
+if (debug) console.log('debugOn');
+
+// Info
 console.log(
   `%cv${version} %c- Alle anregungen an %ct.rappo@kieback-peter.ch`,
   "color: yellow; font-weight:bold",
