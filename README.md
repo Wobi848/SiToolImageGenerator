@@ -34,7 +34,7 @@ Si-Tool Image Generator is a simple web application that generates images for Si
 * add rows function
 * update/improve download sections, may not work properly.
 * ~~add auto numbering function, a lot of objects just use numbers~~
-* add platform="BMR" version="2.01.1"
+* add platform="BMR" version="2.01.1" (S066_cr.editor.xml)
 
 ## Known Bugs
 
