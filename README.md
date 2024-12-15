@@ -40,7 +40,7 @@ Si-Tool Image Generator is a simple web application that generates images for Si
 
 * None currently known. If you encounter any issues, please report them in the issues section of this repository.
 * ~~Remove Inpus, doesn't count probably.~~
-* width changes back to default, add right setting.
+* width changes back to default on generate, add right setting.
 
 ## Contributing
 
