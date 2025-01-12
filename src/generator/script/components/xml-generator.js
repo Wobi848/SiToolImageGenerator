@@ -3,8 +3,11 @@ const xmlOutput = document.getElementById("xml-output");
 // XML Display Name
 const fileNameElement = document.getElementById("fileName");
 imageNameInput.addEventListener("input", () => {
+    UpdateXMLFileNameText();
+});
+function UpdateXMLFileNameText() {
     if (imageNameInput.value != "") {
-        const fileName = `${imageNameInput.value}.editor.xml`;
+        const fileName = `${imageNameInput.value}${freeComponentFileName}.xml`;
         if (fileNameElement)
             fileNameElement.innerText = `${fileName}`;
     }
@@ -12,10 +15,52 @@ imageNameInput.addEventListener("input", () => {
         if (fileNameElement)
             fileNameElement.innerText = "XML";
     }
-});
+}
+// Define Platform Version FileName
+const platformSelectElement = document.getElementById("platform-select");
+if (platformSelectElement) {
+    platformSelectElement.addEventListener("change", () => {
+        if (platformSelectElement.value !== "") {
+            console.log("Platform: " + platformSelectElement.value);
+            DefinePlatform(platformSelectElement.value);
+        }
+    });
+}
+else {
+    console.error("Element with ID 'platform-select' not found.");
+}
+function DefinePlatform(platform) {
+    if (platform === "DDC") {
+        freeComponentPlatformSelect = false;
+        freeComponentPlatform = freeComponentPlatformDDC;
+        freeComponentVersion = freeComponentVersionDDC;
+        freeComponentFileName = freeComponentFileNameDDC;
+    }
+    else if (platform === "BMR") {
+        freeComponentPlatformSelect = false;
+        freeComponentPlatform = freeComponentPlatformBMR;
+        freeComponentVersion = freeComponentVersionBMR;
+        freeComponentFileName = freeComponentFileNameBMR;
+    }
+    else {
+        freeComponentPlatformSelect = true;
+        freeComponentPlatform = freeComponentPlatformDDC;
+        freeComponentVersion = freeComponentVersionDDC;
+        freeComponentFileName = freeComponentFileNameDDC;
+    }
+    UpdateXMLFileNameText();
+}
 // Add event listener to the generate and display button
 generateAndDisplayXmlButton.addEventListener("click", (event) => {
     event.preventDefault(); // Prevent the form from submitting
+    CreateXmlFile(false);
+});
+function CreateXmlFile(whatFile) {
+    if (whatFile === true) {
+        freeComponentPlatform = freeComponentPlatformBMR;
+        freeComponentVersion = freeComponentVersionBMR;
+        freeComponentFileName = freeComponentFileNameBMR;
+    }
     // Create the XML string
     // Create Background for readability
     backgroundLayer = [];
@@ -46,10 +91,14 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
     let freeCompWidthxRows = freeComponentRows * freeComponentWidth;
     let freeCompWidth = freeComponentWidth;
     let freeCompX = freeComponentX;
+    let freeCompPlatform = freeComponentPlatform;
+    let freeCompVer = freeComponentVersion;
     freeComponent = [];
     inputsIndex.forEach((index) => {
         const addressInput = document.getElementById(`address-${index}`);
         freeComponent.push({
+            platform: freeCompPlatform,
+            version: freeCompVer,
             comp: freeCompCompValue,
             var: freeCompVarValue,
             x: freeCompX,
@@ -67,7 +116,7 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
     const ratValue = ratInput.value;
     const imageNameValue = imageNameInput.value;
     let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<EditorImageTemplate name="${ratValue}" objectType="${imageNameValue}" platform="DDC4000" version="1.7.1" langs="en,de" prescan="false">
+<EditorImageTemplate name="${ratValue}" objectType="${imageNameValue}" platform="${freeCompPlatform}" version="${freeCompVer}" langs="en,de" prescan="false">
     <!-- created with kp.rappo.dev ${version} -->
     <Comment lang="en">Object Image</Comment>
     <Comment lang="de">Object Image</Comment>
@@ -136,7 +185,7 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
     // Display the XML output
     xmlOutput.innerText = xml;
     saveXmlButton.disabled = false;
-});
+}
 function componentWidthRest(number, divider = 2) {
     let rest = number % divider;
     if (debug)

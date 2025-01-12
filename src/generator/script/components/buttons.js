@@ -27,14 +27,29 @@ fillAddressesButton.addEventListener("click", () => {
 const saveXmlButton = document.getElementById("save-xml");
 saveXmlButton.disabled = true;
 saveXmlButton.addEventListener("click", () => {
+    SaveXmlFile();
+});
+function SaveXmlFile() {
     // Create a blob and save it as an XML file
     const blob = new Blob([xmlOutput.innerText], { type: "application/xml" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${imageNameInput.value}.editor.xml`;
+    a.download = `${imageNameInput.value}${freeComponentFileName}.xml`;
     a.click();
-});
+    if (freeComponentPlatformSelect === true) {
+        // Create Second File
+        CreateXmlFile(true);
+        // Create a blob and save it as an XML file
+        const blob = new Blob([xmlOutput.innerText], { type: "application/xml" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${imageNameInput.value}${freeComponentFileName}.xml`;
+        a.click();
+        DefinePlatform(platformSelectElement.value);
+    }
+}
 // Add Input
 const addComponentButton = document.getElementById("add-Component");
 addComponentButton.addEventListener("click", () => {

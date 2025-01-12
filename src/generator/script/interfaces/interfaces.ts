@@ -17,6 +17,8 @@ interface KeyEvent {
   }
   
   interface FreeComponent {
+    platform: string;
+    version: string;
     comp: number;
     var: number;
     x: number;

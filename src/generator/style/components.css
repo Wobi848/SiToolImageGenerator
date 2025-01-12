@@ -1,3 +1,45 @@
+/* */
+
+/* Apply the same styles as input[type="text"] and input[type="number"] */
+select {
+  width: 100%; /* Match the width of inputs */
+  max-width: 403px; /* Match the max-width of inputs */
+  padding: 5px; /* Match the padding of inputs */
+  margin: 3px 0; /* Match the margin of inputs */
+  border: 1px solid #666; /* Match the border of inputs */
+  border-radius: 5px; /* Match the border-radius of inputs */
+  font-size: 16px; /* Match the font-size of inputs */
+  font-family: Open Sans, sans-serif; /* Match the font-family of inputs */
+  background-color: #555; /* Match the background-color of inputs */
+  color: #fff; /* Match the text color of inputs */
+  appearance: none; /* Remove default arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); /* Custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 8px center; /* Position of the arrow */
+  padding-right: 30px; /* Add space for the arrow */
+}
+
+/* Focus state to match inputs */
+select:focus {
+  border-color: #777; /* Match the focus border color of inputs */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Match the focus box-shadow of inputs */
+  outline: none; /* Remove default outline */
+}
+
+/* Style for disabled inputs */
+input:disabled {
+  background-color: #333; /* Darker background for disabled state */
+  color: #888; /* Lighter text color for disabled state */
+  border-color: #444; /* Adjust border color for disabled state */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  opacity: 0.7; /* Reduce opacity to make it look "disabled" */
+}
+
+/* Optional: Add a placeholder-like style for disabled inputs */
+input:disabled::placeholder {
+  color: #888; /* Match the placeholder color to the disabled text color */
+}
+
 /* Forms */
 .container {
   display: grid;
@@ -10,6 +52,10 @@
 
 form > div > input[type="text"] {
   width: calc(100% - 85px);
+}
+
+form > div > select {
+  width: calc(100% + 0px);
 }
 
 form > div > input[type="number"] {

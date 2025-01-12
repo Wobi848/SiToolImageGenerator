@@ -1,5 +1,5 @@
 // Version
-const version = "0.7.16";
+const version = "0.8.0";
 const versionElement = document.getElementById("version");
 if (versionElement) versionElement.innerText = `v${version}`;
 
@@ -10,11 +10,11 @@ let debug: boolean = true;
 let domain_name = document.location.hostname;
 console.log(domain_name);
 
-if (domain_name == 'kp.rappo.dev') {
+if (domain_name == "kp.rappo.dev") {
   debug = false;
 }
 
-if (debug) console.log('debugOn');
+if (debug) console.log("debugOn");
 
 // Info
 console.log(
@@ -40,6 +40,19 @@ let freeComponentWidth = 300;
 const freeComponentWidthmin = 200;
 const freeComponentAddress = "tOff";
 
+const freeComponentVersionDDC: string = "1.7.1";
+const freeComponentPlatformDDC: string = "DDC";
+const freeComponentFileNameDDC: string = ".editor";
+const freeComponentVersionBMR: string = "2.01.1";
+const freeComponentPlatformBMR: string = "BMR";
+const freeComponentFileNameBMR: string = "_cr.editor";
+
+let freeComponentVersion: string = freeComponentVersionDDC;
+let freeComponentPlatform: string = freeComponentPlatformDDC;
+let freeComponentFileName: string = freeComponentFileNameDDC;
+
+let freeComponentPlatformSelect: boolean = true;
+
 // Inputs
 const widthInput = document.getElementById("width-input") as HTMLInputElement;
 const ratInput = document.getElementById("rat-input") as HTMLInputElement;
@@ -49,5 +62,6 @@ const imageNameInput = document.getElementById(
 
 widthInput.addEventListener("input", () => {
   freeComponentWidth = parseInt(widthInput.value, 10);
-  if (freeComponentWidth <= freeComponentWidthmin) freeComponentWidth = freeComponentWidthmin;
+  if (freeComponentWidth <= freeComponentWidthmin)
+    freeComponentWidth = freeComponentWidthmin;
 });
