@@ -1,5 +1,5 @@
 // Version
-const version = "0.8.0";
+const version = "0.8.1";
 const versionElement = document.getElementById("version");
 if (versionElement) versionElement.innerText = `v${version}`;
 
