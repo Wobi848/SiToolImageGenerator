@@ -1,6 +1,6 @@
 "use strict";
 // Version
-const version = "0.8.0";
+const version = "0.8.1";
 const versionElement = document.getElementById("version");
 if (versionElement)
     versionElement.innerText = `v${version}`;
@@ -32,7 +32,7 @@ let freeComponentWidth = 300;
 const freeComponentWidthmin = 200;
 const freeComponentAddress = "tOff";
 const freeComponentVersionDDC = "1.7.1";
-const freeComponentPlatformDDC = "DDC";
+const freeComponentPlatformDDC = "DDC4000";
 const freeComponentFileNameDDC = ".editor";
 const freeComponentVersionBMR = "2.01.1";
 const freeComponentPlatformBMR = "BMR";

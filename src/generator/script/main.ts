@@ -1,5 +1,5 @@
 // Version
-const version = "0.8.0";
+const version = "0.8.1";
 const versionElement = document.getElementById("version");
 if (versionElement) versionElement.innerText = `v${version}`;
 
@@ -41,7 +41,7 @@ const freeComponentWidthmin = 200;
 const freeComponentAddress = "tOff";
 
 const freeComponentVersionDDC: string = "1.7.1";
-const freeComponentPlatformDDC: string = "DDC";
+const freeComponentPlatformDDC: string = "DDC4000";
 const freeComponentFileNameDDC: string = ".editor";
 const freeComponentVersionBMR: string = "2.01.1";
 const freeComponentPlatformBMR: string = "BMR";
