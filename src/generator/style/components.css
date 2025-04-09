@@ -55,7 +55,7 @@ form > div > input[type="text"] {
 }
 
 form > div > select {
-  width: calc(100% + 0px);
+  width: calc(100% - 73px);
 }
 
 form > div > input[type="number"] {

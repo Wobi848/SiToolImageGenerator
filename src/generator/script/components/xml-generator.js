@@ -21,7 +21,8 @@ const platformSelectElement = document.getElementById("platform-select");
 if (platformSelectElement) {
     platformSelectElement.addEventListener("change", () => {
         if (platformSelectElement.value !== "") {
-            console.log("Platform: " + platformSelectElement.value);
+            if (debug)
+                console.log("Platform: " + platformSelectElement.value);
             DefinePlatform(platformSelectElement.value);
         }
     });
