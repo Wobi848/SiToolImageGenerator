@@ -51,16 +51,34 @@ function DefinePlatform(platform) {
     }
     UpdateXMLFileNameText();
 }
+// Ensure freeComponentWidth is initialized with the saved value before XML generation
+function initializeFreeComponentWidth() {
+    const storedBasicSettings = localStorage.getItem("basicSettings");
+    if (storedBasicSettings) {
+        const basicSettings = JSON.parse(storedBasicSettings);
+        freeComponentWidth = basicSettings.width;
+        if (freeComponentWidth <= freeComponentWidthmin) {
+            freeComponentWidth = freeComponentWidthmin;
+        }
+    }
+}
 // Add event listener to the generate and display button
 generateAndDisplayXmlButton.addEventListener("click", (event) => {
     event.preventDefault(); // Prevent the form from submitting
+    initializeFreeComponentWidth();
     CreateXmlFile(false);
 });
+// Ensure widthInput is not overwritten unnecessarily during XML generation
 function CreateXmlFile(whatFile) {
     if (whatFile === true) {
         freeComponentPlatform = freeComponentPlatformBMR;
         freeComponentVersion = freeComponentVersionBMR;
         freeComponentFileName = freeComponentFileNameBMR;
+    }
+    // Initialize freeComponentWidth with the current value of widthInput
+    freeComponentWidth = parseInt(widthInput.value, 10);
+    if (freeComponentWidth <= freeComponentWidthmin) {
+        freeComponentWidth = freeComponentWidthmin;
     }
     // Create the XML string
     // Create Background for readability
@@ -114,8 +132,8 @@ function CreateXmlFile(whatFile) {
         freeCompVarValue += 2;
         freeCompYValue += 20;
     });
-    const ratValue = ratInput.value;
-    const imageNameValue = imageNameInput.value;
+    const ratValue = ratInput.value; // Updated from settings
+    const imageNameValue = imageNameInput.value; // Updated from settings
     let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <EditorImageTemplate name="${ratValue}" objectType="${imageNameValue}" platform="${freeCompPlatform}" version="${freeCompVer}" langs="en,de" prescan="false">
     <!-- created with kp.rappo.dev ${version} -->

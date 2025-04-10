@@ -46,9 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     updateBasicSettings();
 });
+// Removed automatic update of imageNameInput
 function updateBasicSettings() {
-    widthInput.value = widthSettingInput.value;
-    ratInput.value = nameSettingInput.value;
+    widthInput.value = widthSettingInput.value; // Always update widthInput
+    ratInput.value = nameSettingInput.value; // Always update ratInput
+    // Update global variables for XML generation
+    freeComponentWidth = parseInt(widthSettingInput.value, 10);
+    if (freeComponentWidth <= freeComponentWidthmin)
+        freeComponentWidth = freeComponentWidthmin;
 }
 function basicSettingsSave() {
     if (nameSettingInput)

@@ -45,9 +45,22 @@ let freeComponentPlatformSelect = true;
 const widthInput = document.getElementById("width-input");
 const ratInput = document.getElementById("rat-input");
 const imageNameInput = document.getElementById("imagename-input");
-widthInput.addEventListener("input", () => {
-    freeComponentWidth = parseInt(widthInput.value, 10);
-    if (freeComponentWidth <= freeComponentWidthmin)
-        freeComponentWidth = freeComponentWidthmin;
+document.addEventListener("DOMContentLoaded", () => {
+    const storedBasicSettings = localStorage.getItem("basicSettings");
+    if (storedBasicSettings) {
+        const basicSettings = JSON.parse(storedBasicSettings);
+        freeComponentWidth = basicSettings.width;
+        if (freeComponentWidth <= freeComponentWidthmin) {
+            freeComponentWidth = freeComponentWidthmin;
+        }
+        widthInput.value = `${freeComponentWidth}`; // Apply saved value to widthInput
+    }
+    widthInput.addEventListener("input", () => {
+        freeComponentWidth = parseInt(widthInput.value, 10);
+        if (freeComponentWidth <= freeComponentWidthmin) {
+            freeComponentWidth = freeComponentWidthmin;
+        }
+        localStorage.setItem("basicSettings", JSON.stringify(Object.assign(Object.assign({}, JSON.parse(localStorage.getItem("basicSettings") || "{}")), { width: freeComponentWidth })));
+    });
 });
 //# sourceMappingURL=main.js.map

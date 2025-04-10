@@ -60,8 +60,25 @@ const imageNameInput = document.getElementById(
   "imagename-input"
 ) as HTMLInputElement;
 
-widthInput.addEventListener("input", () => {
-  freeComponentWidth = parseInt(widthInput.value, 10);
-  if (freeComponentWidth <= freeComponentWidthmin)
-    freeComponentWidth = freeComponentWidthmin;
+document.addEventListener("DOMContentLoaded", () => {
+  const storedBasicSettings = localStorage.getItem("basicSettings");
+  if (storedBasicSettings) {
+    const basicSettings = JSON.parse(storedBasicSettings);
+    freeComponentWidth = basicSettings.width;
+    if (freeComponentWidth <= freeComponentWidthmin) {
+      freeComponentWidth = freeComponentWidthmin;
+    }
+    widthInput.value = `${freeComponentWidth}`; // Apply saved value to widthInput
+  }
+
+  widthInput.addEventListener("input", () => {
+    freeComponentWidth = parseInt(widthInput.value, 10);
+    if (freeComponentWidth <= freeComponentWidthmin) {
+      freeComponentWidth = freeComponentWidthmin;
+    }
+    localStorage.setItem("basicSettings", JSON.stringify({
+      ...JSON.parse(localStorage.getItem("basicSettings") || "{}"),
+      width: freeComponentWidth,
+    }));
+  });
 });
