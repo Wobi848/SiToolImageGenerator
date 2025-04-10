@@ -25,42 +25,43 @@ console.log(
 );
 
 // XML Variables
-let inputsIndex: any = [0];
-let backgroundLayer: BackgroundLayer[] = [];
-let backgroundLayerY = 42;
-let freeComponent: FreeComponent[] = [];
-let freeComponentCount = 1;
-let freeComponentRows = 1;
-let actualFreeComponentsCount = 1;
-const freeComponentComp = 268;
-const freeComponentVar = 153231;
-const freeComponentX = 0;
-const freeComponentY = 22;
-let freeComponentWidth = 300;
-const freeComponentWidthmin = 200;
-const freeComponentAddress = "tOff";
+let inputsIndex: number[] = [0]; // Index for inputs
+let backgroundLayer: { y: number }[] = []; // Background layer configuration
+let backgroundLayerY = 42; // Default Y position for background layers
+let freeComponent: FreeComponent[] = []; // Array to store free components
+let freeComponentCount = 1; // Count of free components
+let freeComponentRows = 1; // Number of rows for free components
+let actualFreeComponentsCount = 1; // Actual count of free components
+const freeComponentComp = 268; // Starting component ID
+const freeComponentVar = 153231; // Starting variable ID
+const freeComponentX = 0; // Default X position for free components
+const freeComponentY = 22; // Default Y position for free components
+let freeComponentWidth = 300; // Default width for free components
+const freeComponentWidthmin = 200; // Minimum width for free components
+const freeComponentAddress = "tOff"; // Default address for free components
 
-const freeComponentVersionDDC: string = "1.7.1";
-const freeComponentPlatformDDC: string = "DDC4000";
-const freeComponentFileNameDDC: string = ".editor";
-const freeComponentVersionBMR: string = "2.01.1";
-const freeComponentPlatformBMR: string = "BMR";
-const freeComponentFileNameBMR: string = "_cr.editor";
+const freeComponentVersionDDC: string = "1.7.1"; // Version for DDC platform
+const freeComponentPlatformDDC: string = "DDC4000"; // Platform name for DDC
+const freeComponentFileNameDDC: string = ".editor"; // File name for DDC
+const freeComponentVersionBMR: string = "2.01.1"; // Version for BMR platform
+const freeComponentPlatformBMR: string = "BMR"; // Platform name for BMR
+const freeComponentFileNameBMR: string = "_cr.editor"; // File name for BMR
 
-let freeComponentVersion: string = freeComponentVersionDDC;
-let freeComponentPlatform: string = freeComponentPlatformDDC;
-let freeComponentFileName: string = freeComponentFileNameDDC;
+let freeComponentVersion: string = freeComponentVersionDDC; // Current version
+let freeComponentPlatform: string = freeComponentPlatformDDC; // Current platform
+let freeComponentFileName: string = freeComponentFileNameDDC; // Current file name
 
-let freeComponentPlatformSelect: boolean = true;
+let freeComponentPlatformSelect: boolean = true; // Flag for platform selection
 
 // Inputs
-const widthInput = document.getElementById("width-input") as HTMLInputElement;
-const ratInput = document.getElementById("rat-input") as HTMLInputElement;
+const widthInput = document.getElementById("width-input") as HTMLInputElement; // Input for width
+const ratInput = document.getElementById("rat-input") as HTMLInputElement; // Input for ratio
 const imageNameInput = document.getElementById(
   "imagename-input"
-) as HTMLInputElement;
+) as HTMLInputElement; // Input for image name
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Load stored settings from localStorage
   const storedBasicSettings = localStorage.getItem("basicSettings");
   if (storedBasicSettings) {
     const basicSettings = JSON.parse(storedBasicSettings);
@@ -71,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     widthInput.value = `${freeComponentWidth}`; // Apply saved value to widthInput
   }
 
+  // Update width value and save to localStorage on input change
   widthInput.addEventListener("input", () => {
     freeComponentWidth = parseInt(widthInput.value, 10);
     if (freeComponentWidth <= freeComponentWidthmin) {

@@ -68,19 +68,17 @@ generateAndDisplayXmlButton.addEventListener("click", (event) => {
     initializeFreeComponentWidth();
     CreateXmlFile(false);
 });
-// Ensure widthInput is not overwritten unnecessarily during XML generation
+// Added comments to explain XML generation logic
 function CreateXmlFile(whatFile) {
-    if (whatFile === true) {
+    // Determine platform and version based on the file type
+    if (whatFile) {
         freeComponentPlatform = freeComponentPlatformBMR;
         freeComponentVersion = freeComponentVersionBMR;
         freeComponentFileName = freeComponentFileNameBMR;
     }
     // Initialize freeComponentWidth with the current value of widthInput
-    freeComponentWidth = parseInt(widthInput.value, 10);
-    if (freeComponentWidth <= freeComponentWidthmin) {
-        freeComponentWidth = freeComponentWidthmin;
-    }
-    // Create the XML string
+    freeComponentWidth = Math.max(parseInt(widthInput.value, 10), freeComponentWidthmin);
+    // Generate XML structure
     // Create Background for readability
     backgroundLayer = [];
     let backgroundLayerCount = Math.floor(actualFreeComponentsCount / 2); // Testing

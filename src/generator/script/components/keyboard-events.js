@@ -10,6 +10,15 @@ keyStrokeEvent = {
     removeButton: "y",
     fillAddresses: "v",
 };
+function handleRemoveButtonClick() {
+    const removeButtons = Array.from(document.querySelectorAll(".remove-button"));
+    if (removeButtons.length > 0) {
+        removeButtons[removeButtons.length - 1].click();
+    }
+    else {
+        console.log("No components to remove");
+    }
+}
 // Update Tooltips
 document.addEventListener("keydown", (event) => {
     if (event.altKey) {
@@ -18,13 +27,7 @@ document.addEventListener("keydown", (event) => {
                 addComponentButton.click();
                 break;
             case keyStrokeEvent.removeButton:
-                const removeButtons = document.querySelectorAll(".remove-button");
-                if (removeButtons.length > 0) {
-                    removeButtons[removeButtons.length - 1].click();
-                }
-                else {
-                    console.log("No components to remove");
-                }
+                handleRemoveButtonClick();
                 break;
             case keyStrokeEvent.generate:
                 generateAndDisplayXmlButton.click();

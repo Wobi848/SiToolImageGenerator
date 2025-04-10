@@ -36,25 +36,21 @@ saveXmlButton.addEventListener("click", () => {
   SaveXmlFile();
 });
 
-function SaveXmlFile() {
-  // Create a blob and save it as an XML file
-  const blob = new Blob([xmlOutput.innerText], { type: "application/xml" });
+// Modularized repetitive logic into reusable functions
+function createBlobAndDownload(content: string, fileName: string) {
+  const blob = new Blob([content], { type: "application/xml" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `${imageNameInput.value}${freeComponentFileName}.xml`;
+  a.download = fileName;
   a.click();
-  if (freeComponentPlatformSelect === true) {
-    // Create Second File
-    CreateXmlFile(true);
-    // Create a blob and save it as an XML file
-    const blob = new Blob([xmlOutput.innerText], { type: "application/xml" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${imageNameInput.value}${freeComponentFileName}.xml`;
-    a.click();
+}
 
+function SaveXmlFile() {
+  createBlobAndDownload(xmlOutput.innerText, `${imageNameInput.value}${freeComponentFileName}.xml`);
+  if (freeComponentPlatformSelect) {
+    CreateXmlFile(true);
+    createBlobAndDownload(xmlOutput.innerText, `${imageNameInput.value}${freeComponentFileName}.xml`);
     DefinePlatform(platformSelectElement.value);
   }
 }

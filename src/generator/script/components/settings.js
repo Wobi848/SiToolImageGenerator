@@ -13,23 +13,23 @@ const widthSettingInput = document.getElementById("width-setting");
     closeSettingsPopup();
 });
 document.addEventListener("DOMContentLoaded", () => {
-    const storedKeyStrokeEvent = localStorage.getItem("keyStrokeEvent");
+    const storedKeyStrokeEvent = getStoredItem("keyStrokeEvent");
     if (storedKeyStrokeEvent) {
-        keyStrokeEvent = JSON.parse(storedKeyStrokeEvent);
+        keyStrokeEvent = storedKeyStrokeEvent;
     }
     if (debug)
         console.log(keyStrokeEvent);
-    const storedBasicSettings = localStorage.getItem("basicSettings");
+    const storedBasicSettings = getStoredItem("basicSettings");
     if (storedBasicSettings) {
-        basicSettings = JSON.parse(storedBasicSettings);
+        basicSettings = storedBasicSettings;
     }
     if (debug)
         console.log(basicSettings);
 });
 document.addEventListener("DOMContentLoaded", () => {
-    const storedKeyStrokeEvent = localStorage.getItem("keyStrokeEvent");
+    const storedKeyStrokeEvent = getStoredItem("keyStrokeEvent");
     if (storedKeyStrokeEvent) {
-        keyStrokeEvent = JSON.parse(storedKeyStrokeEvent);
+        keyStrokeEvent = storedKeyStrokeEvent;
         generateHotkeyInput.value = keyStrokeEvent.generate;
         saveHotkeyInput.value = keyStrokeEvent.save;
         resetHotkeyInput.value = keyStrokeEvent.reset;
@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
         fillAddressesHotkeyInput.value = keyStrokeEvent.fillAddresses;
     }
     updateTooltips();
-    const storedBasicSettings = localStorage.getItem("basicSettings");
+    const storedBasicSettings = getStoredItem("basicSettings");
     if (storedBasicSettings) {
-        basicSettings = JSON.parse(storedBasicSettings);
+        basicSettings = storedBasicSettings;
         nameSettingInput.value = basicSettings.name;
         widthSettingInput.value = `${basicSettings.width}`;
     }
@@ -60,7 +60,7 @@ function basicSettingsSave() {
         basicSettings.name = nameSettingInput.value;
     if (widthSettingInput)
         basicSettings.width = parseInt(widthSettingInput.value, 10);
-    localStorage.setItem("basicSettings", JSON.stringify(basicSettings));
+    setStoredItem("basicSettings", basicSettings);
     updateBasicSettings();
 }
 function keyStrokeEventSave() {
@@ -77,7 +77,7 @@ function keyStrokeEventSave() {
         keyStrokeEvent.removeButton = removeButtonHotkeyInput.value;
     if (fillAddressesHotkeyInput)
         keyStrokeEvent.fillAddresses = fillAddressesHotkeyInput.value;
-    localStorage.setItem("keyStrokeEvent", JSON.stringify(keyStrokeEvent));
+    setStoredItem("keyStrokeEvent", keyStrokeEvent);
     updateTooltips();
 }
 function closeSettingsPopup() {
@@ -85,5 +85,13 @@ function closeSettingsPopup() {
     if (settingsPopup) {
         settingsPopup.style.display = "none";
     }
+}
+// Refactored localStorage operations into utility functions
+function getStoredItem(key) {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : null;
+}
+function setStoredItem(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
 }
 //# sourceMappingURL=settings.js.map
