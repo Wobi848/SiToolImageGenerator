@@ -15,7 +15,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #666;
+  background: linear-gradient(90deg, #666, #999);
   border-radius: 0px 5px 5px 0px;
 }
 
@@ -41,6 +41,9 @@ header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  background: linear-gradient(90deg, #333, #555);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Creates a gap between the title bar and the main form */
 }
 
 h1 {
@@ -71,6 +74,7 @@ h1 {
 
 .footer a:hover {
   text-decoration: underline;
+  color: #ffa500; /* Highlight color */
 }
 
 .copyright {

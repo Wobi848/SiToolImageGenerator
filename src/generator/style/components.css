@@ -137,13 +137,14 @@ input[type="number"]:focus {
 
 .tooltip {
   position: absolute;
-  background-color: #fff;
-  color: #333;
+  background-color: #444;
+  color: #fff;
   padding: 5px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1;
   transition: opacity 0.2s;
+  border: 1px solid #666;
 }
 
 .tooltip::after {
@@ -154,7 +155,7 @@ input[type="number"]:focus {
   transform: translate(-50%, -50%);
   border-width: 5px;
   border-style: solid;
-  border-color: #fff transparent transparent transparent;
+  border-color: #444 transparent transparent transparent;
 }
 
 .button:hover .tooltip {
@@ -176,6 +177,7 @@ input[type="number"]:focus {
   width: 95%; /* make the popup take the full width of its container */
   overflow-y: auto; /* add this line */
   max-height: 80vh; /* set a maximum height for the popup */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .popup h2 {

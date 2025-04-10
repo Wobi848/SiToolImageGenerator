@@ -25,6 +25,8 @@
 
 .sidebar-button:hover {
   background-color: rgb(206, 100, 19);
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
 }
 
 .sidebar-button i {
@@ -53,7 +55,8 @@
 }
 
 .download-button:hover {
-  background-color: #555;
+  background-color: #777;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .github-button {

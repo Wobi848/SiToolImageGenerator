@@ -27,18 +27,19 @@
   margin-bottom: 20px; /* Add some margin below the button */
 }
 
+/* Enhanced download button with gradient background */
 #download-all-button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff; /* Bright blue background */
+  background: linear-gradient(90deg, #007bff, #0056b3);
   color: #ffffff; /* White text */
   cursor: pointer;
   transition: background-color 0.3s; /* Add transition effect */
 }
 
 #download-all-button:hover {
-  background-color: #0069d9; /* Darker blue background on hover */
+  background: linear-gradient(90deg, #0056b3, #003f7f);
 }
 
 #download-all-button:disabled {
