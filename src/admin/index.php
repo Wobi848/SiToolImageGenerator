@@ -222,6 +222,7 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
         .actions {
             display: flex;
             gap: 5px;
+            white-space: nowrap; /* Prevent button text from wrapping */
         }
         .btn {
             padding: 5px 10px;
@@ -271,6 +272,92 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             .card h2 {
                 text-align: left;
                 font-size: 1.8rem;
+            }
+        }
+        
+        /* Enhanced mobile responsiveness for tables */
+        @media (max-width: 767px) {
+            .file-table {
+                font-size: 0.9rem; /* Slightly smaller font on mobile */
+            }
+            
+            .btn {
+                padding: 4px 8px; /* Smaller padding for buttons on mobile */
+                font-size: 13px;
+            }
+            
+            .file-table th, .file-table td {
+                padding: 6px 4px; /* Reduce cell padding on mobile */
+            }
+            
+            /* Force table to not be like a table on mobile */
+            @media (max-width: 480px) {
+                .file-table, .file-table thead, .file-table tbody, .file-table th, .file-table td, .file-table tr {
+                    display: block;
+                }
+                
+                /* Hide table headers */
+                .file-table thead tr {
+                    position: absolute;
+                    top: -9999px;
+                    left: -9999px;
+                }
+                
+                .file-table tr {
+                    margin-bottom: 15px;
+                    border: 1px solid #444;
+                    border-radius: 4px;
+                }
+                
+                .file-table td {
+                    /* Make like a row */
+                    border: none;
+                    border-bottom: 1px solid #444;
+                    position: relative;
+                    padding-left: 50%;
+                    text-align: right;
+                }
+                
+                .file-table td:before {
+                    /* Add labels for each cell */
+                    position: absolute;
+                    top: 6px;
+                    left: 6px;
+                    width: 45%;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                    text-align: left;
+                    font-weight: bold;
+                    content: attr(data-label);
+                }
+                
+                /* Label each cell */
+                .file-table td:nth-of-type(1):before { content: "Dateiname"; }
+                .file-table td:nth-of-type(2):before { content: "Plattform"; }
+                .file-table td:nth-of-type(3):before { content: "Version"; }
+                .file-table td:nth-of-type(4):before { content: "Hochgeladen am"; }
+                .file-table td:nth-of-type(5):before { content: "Hochgeladen von"; }
+                .file-table td:nth-of-type(6):before { content: "Aktionen"; }
+                
+                /* Actions column needs special treatment */
+                .file-table td.actions {
+                    text-align: center;
+                    padding: 10px;
+                }
+                
+                .file-table td.actions:before {
+                    display: none; /* No label for actions */
+                }
+                
+                .file-table td.actions form {
+                    width: 100%;
+                }
+                
+                .file-table td.actions .btn {
+                    width: 100%;
+                    padding: 8px;
+                    font-size: 14px;
+                }
             }
         }
         
@@ -330,8 +417,8 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
                         <tbody>
                             <?php foreach ($files as $file): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($file['filename']); ?></td>
-                                    <td>
+                                    <td data-label="Dateiname"><?php echo htmlspecialchars($file['filename']); ?></td>
+                                    <td data-label="Plattform">
                                         <?php 
                                             $platformClass = '';
                                             switch ($file['platform']) {
@@ -349,10 +436,10 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
                                             <?php echo htmlspecialchars($file['platform']); ?>
                                         </span>
                                     </td>
-                                    <td><?php echo htmlspecialchars($file['version']); ?></td>
-                                    <td><?php echo htmlspecialchars(date('d.m.Y H:i', strtotime($file['upload_date']))); ?></td>
-                                    <td><?php echo htmlspecialchars($file['uploaded_by']); ?></td>
-                                    <td class="actions">
+                                    <td data-label="Version"><?php echo htmlspecialchars($file['version']); ?></td>
+                                    <td data-label="Hochgeladen am"><?php echo htmlspecialchars(date('d.m.Y H:i', strtotime($file['upload_date']))); ?></td>
+                                    <td data-label="Hochgeladen von"><?php echo htmlspecialchars($file['uploaded_by']); ?></td>
+                                    <td data-label="Aktionen" class="actions">
                                         <form method="post" onsubmit="return confirm('Sind Sie sicher, dass Sie diese Datei löschen möchten?');">
                                             <input type="hidden" name="file_id" value="<?php echo $file['id']; ?>">
                                             <button type="submit" name="delete_file" class="btn btn-danger">
