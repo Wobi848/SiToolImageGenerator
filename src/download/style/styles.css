@@ -140,6 +140,10 @@
   flex-wrap: wrap;
   gap: 15px;
   justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: calc(100% - 20px);
+  box-sizing: border-box;
 }
 
 /* Button group for organizing action buttons */
@@ -274,14 +278,18 @@ html {
   box-sizing: inherit;
 }
 
-body {
+/* Content container styling */
+.container.filesp {
   padding: 0 10px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 /* Responsive typography */
 h1 {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   text-align: center;
+  width: 100%;
 }
 
 /* Enhanced responsive styles for different screen sizes */
@@ -344,6 +352,32 @@ h1 {
   #file-list button {
     margin: 10px 0 0 0;
     width: 100%;
+  }
+  
+  /* Footer responsive styling for small devices */
+  .footer {
+    padding: 0;
+    flex-direction: column;
+    min-height: 50px;
+  }
+  
+  .footer p {
+    margin: 8px 0 4px 0;
+  }
+  
+  .footer-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  
+  .terms-button {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  
+  body {
+    padding-bottom: 65px; /* Increased padding to accommodate larger footer */
   }
 }
 

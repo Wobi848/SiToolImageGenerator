@@ -44,6 +44,11 @@ header {
   background: linear-gradient(90deg, #333, #555);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px; /* Creates a gap between the title bar and the main form */
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 h1 {
@@ -55,16 +60,25 @@ h1 {
 .footer {
   position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding: 5px;
+  padding: 0;
   font-size: 12px;
-  height: 20px;
+  height: auto;
+  min-height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
+  margin: 0;
+}
+
+.footer p {
+  margin: 8px 10px;
 }
 
 .footer a {
@@ -80,6 +94,7 @@ h1 {
 .copyright {
   display: flex;
   align-items: center;
+  padding-left: 10px;
 }
 
 .copyright a {
@@ -94,17 +109,14 @@ h1 {
   font-size: 12px; /* reduced font size */
   margin-right: 10px; /* reduced margin */
   padding: 5px 10px;
+  /* Remove the height: 100% and adjust height to fit within footer */
+  height: auto;
+  min-height: 24px;
   color: #fff;
   text-decoration: none;
-}
-
-.terms-button a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.terms-button:hover {
-  background-color: #666; /* darker gray background on hover */
+  /* Add vertical margin to create space between button and footer edges */
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 .footer-buttons {
