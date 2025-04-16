@@ -1,46 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Rappo.dev Website, Service-Tool Image Downloads."
+      content="Editor-Dateien für DDC4000 und DDC420 Service-Tools zum Download. Durchsuchen und filtern Sie nach Plattform-Typ und anderen Kriterien. Kostenlose Downloads von K&P Service-Tool XML Dateien."
     />
-    <meta name="robots" content="index, nofollow" />
-    <title>Download .editor</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/fav/favicon.ico" />
+    <meta name="keywords" content="DDC4000, DDC420, K&P Service-Tool, Editor Files, XML Download, Service-Tool Downloads" />
+    <meta name="author" content="rappo.dev" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rappo.dev/src/download/" />
+    <meta property="og:title" content="DDC4000 & DDC420 Editor-Dateien | K&P Service-Tool Downloads" />
+    <meta property="og:description" content="Laden Sie Editor-Dateien für DDC4000 und DDC420 Service-Tools herunter. Filterbare Sammlung von XML-Dateien für Techniker und Entwickler." />
+    <meta property="og:image" content="https://rappo.dev/assets/img/fav/android-chrome-512x512.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://rappo.dev/src/download/" />
+    <meta property="twitter:title" content="DDC4000 & DDC420 Editor-Dateien | K&P Service-Tool Downloads" />
+    <meta property="twitter:description" content="Laden Sie Editor-Dateien für DDC4000 und DDC420 Service-Tools herunter. Filterbare Sammlung von XML-Dateien für Techniker und Entwickler." />
+    <meta property="twitter:image" content="https://rappo.dev/assets/img/fav/android-chrome-512x512.png" />
+    
+    <title>DDC4000 & DDC420 Editor-Dateien | K&P Service-Tool Downloads</title>
+    
+    <link rel="canonical" href="https://rappo.dev/src/download/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/fav/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/fav/favicon-16x16.png" />
+    <link rel="manifest" href="/assets/img/fav/site.webmanifest" />
+    <link rel="mask-icon" href="/assets/img/fav/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#212121" />
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/src/global-styles/base.css" as="style" />
+    <link rel="preload" href="/src/download/style/styles.css" as="style" />
+    <link rel="preload" href="/src/download/script/script.js" as="script" />
+    
     <link rel="stylesheet" href="/src/global-styles/base.css" />
     <link rel="stylesheet" href="/src/download/style/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    
+    <!-- Structured data for enhanced search engine listings -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "DataDownload",
+        "name": "DDC4000 & DDC420 Editor-Dateien",
+        "description": "Sammlung von Editor-XML-Dateien für DDC4000 und DDC420 Service-Tools.",
+        "url": "https://rappo.dev/src/download/",
+        "encodingFormat": "application/xml",
+        "contentSize": "Variable",
+        "dateModified": "2025-04-16",
+        "contentUrl": "https://rappo.dev/src/download/",
+        "isAccessibleForFree": true,
+        "provider": {
+          "@type": "Organization",
+          "name": "rappo.dev",
+          "url": "https://rappo.dev"
+        }
+      }
+    </script>
   </head>
   <body>
     <header>
-      <h1>.editors Downloads</h1>
+      <h1>DDC4000 & DDC420 Editor-Dateien</h1>
     </header>
-    <!--
-    <a href="/" class="download-button download-tooltip">
-      <i class="fas fa-cog"></i>
-    </a>
-    -->
-    <!-- The filter container will be inserted here by JavaScript -->
-    <div class="button-container filesp">
-      <!-- Filter controls will be inserted here -->
-    </div>
-    <div class="container filesp">
-      <ul id="file-list"></ul>
-    </div>
+    
+    <main>
+      <section aria-labelledby="file-download-section">
+        <h2 id="file-download-section" class="sr-only">Editor-Dateien Download</h2>
+        <p class="section-intro">
+          Durchsuchen und downloaden Sie Editor-Dateien für DDC4000 und DDC420 Service-Tools.
+          Nutzen Sie die Filter, um schnell die gewünschten Dateien zu finden.
+        </p>
+        
+        <!-- The filter container will be inserted here by JavaScript -->
+        <div class="button-container filesp">
+          <!-- Filter controls will be inserted here -->
+        </div>
+        
+        <div class="container filesp">
+          <ul id="file-list" aria-live="polite"></ul>
+        </div>
+      </section>
+    </main>
+    
     <footer class="footer">
-      <p>&copy; 2025 kp.rappo.dev</p>
+      <p>&copy; 2025 <a href="https://rappo.dev" rel="noopener">rappo.dev</a></p>
       <div class="footer-buttons">
-        <button id="generator-button" type="button" class="terms-button">
+        <a href="/" id="generator-button" class="terms-button" aria-label="Zum Generator wechseln">
           Generator
-        </button>
+        </a>
       </div>
     </footer>
-    <script src="/src/download/script/script.js"></script>
+    
+    <script src="/src/download/script/script.js" defer></script>
+    
+    <!-- Add a noscript fallback for users with JavaScript disabled -->
+    <noscript>
+      <div class="noscript-message">
+        <p>Diese Seite benötigt JavaScript, um die Dateien korrekt anzuzeigen und zu filtern. 
+        Bitte aktivieren Sie JavaScript in Ihrem Browser oder nutzen Sie einen alternativen Browser.</p>
+      </div>
+    </noscript>
   </body>
 </html>

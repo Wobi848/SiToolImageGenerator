@@ -1,155 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Generate custom images for K&P service tools effortlessly with our user-friendly image generator. Create, download, and manage your images in one place." />
-  <meta name="robots" content="index, nofollow" />
-  <title>K&P Service-Tool Image Generator - Create Custom Images Easily</title>
+  <meta name="description" content="K&P Service-Tool Bilder Generator - Erstellen Sie benutzerdefinierte Bilder für DDC4000 & DDC420 Systeme einfach und schnell. Entwickelt für Techniker und Servicepersonal." />
+  <meta name="keywords" content="K&P Service-Tool, Bilder Generator, DDC4000, DDC420, XML Generator, Techniker Tools" />
+  <meta name="author" content="rappo.dev" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rappo.dev/" />
+  <meta property="og:title" content="K&P Service-Tool Bilder Generator | DDC4000 & DDC420" />
+  <meta property="og:description" content="Erstellen Sie benutzerdefinierte Service-Tool Bilder für DDC4000 & DDC420 Systeme einfach und schnell." />
+  <meta property="og:image" content="https://rappo.dev/assets/img/fav/android-chrome-512x512.png" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://rappo.dev/" />
+  <meta property="twitter:title" content="K&P Service-Tool Bilder Generator | DDC4000 & DDC420" />
+  <meta property="twitter:description" content="Erstellen Sie benutzerdefinierte Service-Tool Bilder für DDC4000 & DDC420 Systeme einfach und schnell." />
+  <meta property="twitter:image" content="https://rappo.dev/assets/img/fav/android-chrome-512x512.png" />
+  
+  <title>K&P Service-Tool Bilder Generator | DDC4000 & DDC420</title>
+  
+  <link rel="canonical" href="https://rappo.dev/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/fav/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/fav/favicon-16x16.png" />
   <link rel="manifest" href="/assets/img/fav/site.webmanifest" />
   <link rel="mask-icon" href="/assets/img/fav/safari-pinned-tab.svg" color="#5bbad5" />
   <meta name="msapplication-TileColor" content="#da532c" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#212121" />
+  
+  <!-- Preload critical assets -->
+  <link rel="preload" href="/src/global-styles/base.css" as="style" />
+  <link rel="preload" href="/src/generator/style/components.css" as="style" />
+  <link rel="preload" href="/src/generator/script/main.js" as="script" />
+  
   <link rel="stylesheet" href="/src/global-styles/base.css" />
   <link rel="stylesheet" href="/src/generator/style/components.css" />
   <link rel="stylesheet" href="/src/generator/style/buttons.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  
+  <!-- Structured data for enhanced search engine listings -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "K&P Service-Tool Image Generator",
+      "name": "K&P Service-Tool Bilder Generator",
       "url": "https://rappo.dev",
-      "description": "A tool to generate custom images for K&P service tools.",
+      "description": "Eine Anwendung zum Erstellen von benutzerdefinierten Bildern für DDC4000 & DDC420 Service-Tools.",
       "applicationCategory": "Graphics",
       "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      },
       "author": {
         "@type": "Organization",
-        "name": "rappo.dev"
-      }
+        "name": "rappo.dev",
+        "url": "https://rappo.dev"
+      },
+      "dateModified": "2025-04-16",
+      "contentRating": "General"
     }
-    </script>
+  </script>
 </head>
 
 <body class="animated-background">
   <header>
     <h1>K&P Service-Tool Bilder Generator <span id="version"></span></h1>
     <div>
-      <a href="https://github.com/Wobi848/SiToolImageGenerator" target="_blank" class="github-button"
+      <a href="https://github.com/Wobi848/SiToolImageGenerator" target="_blank" rel="noopener" class="github-button"
         aria-label="A Link to Github Repository">
-        <i class="fab fa-github fa-circle" alt="Github-Logo"></i>
+        <i class="fab fa-github fa-circle" aria-hidden="true"></i> <span class="sr-only">GitHub Repository</span>
       </a>
     </div>
   </header>
-  <div class="container">
-    <div class="sidebar-button-container">
-      <button type="button" class="sidebar-button" id="add-Component" title="">
-        <i class="fas fa-plus"></i>
-      </button>
-      <button type="button" class="sidebar-button" id="fill-addresses" title="">
-        <i class="fas fa-list-ol"></i>
-      </button>
-      <button type="button" class="sidebar-button" id="generate-and-display-xml" title="">
-        <i class="fas fa-file-code"></i>
-      </button>
-      <button type="button" class="sidebar-button" id="save-xml" title="" disabled>
-        <i class="fas fa-download"></i>
-      </button>
+  
+  <main>
+    <div class="container">
+      <nav class="sidebar-button-container" aria-label="Tool Actions">
+        <button type="button" class="sidebar-button" id="add-Component" title="Neue Komponente hinzufügen" aria-label="Neue Komponente hinzufügen">
+          <i class="fas fa-plus" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="sidebar-button" id="fill-addresses" title="Adressen ausfüllen" aria-label="Adressen ausfüllen">
+          <i class="fas fa-list-ol" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="sidebar-button" id="generate-and-display-xml" title="XML generieren" aria-label="XML generieren">
+          <i class="fas fa-file-code" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="sidebar-button" id="save-xml" title="XML speichern" aria-label="XML speichern" disabled>
+          <i class="fas fa-download" aria-hidden="true"></i>
+        </button>
+      </nav>
+      
+      <form aria-labelledby="form-heading">
+        <h2 id="form-heading" class="sr-only">Bilder Generator Formular</h2>
+        <div>
+          <label for="rat-input" class="sr-only">Ersteller</label>
+          <input type="text" id="rat-input" placeholder="Ersteller" aria-label="Ersteller eingeben" />
+        </div>
+        <div>
+          <label for="platform-select" class="sr-only">Plattform</label>
+          <select name="platform" id="platform-select" aria-label="Plattform auswählen">
+            <option value="ALL">DDC4000 & DDC420</option>
+            <option value="DDC">DDC4000</option>
+            <option value="BMR">DDC420</option>
+          </select>
+        </div>
+        <div>
+          <label for="imagename-input" class="sr-only">Objekt Name</label>
+          <input type="text" id="imagename-input" placeholder="Objekt Name" aria-label="Objekt Name eingeben" />
+        </div>
+        <div>
+          <label for="width-input" class="sr-only">Breite</label>
+          <input type="number" id="width-input" value="300" placeholder="Breite" min="300" aria-label="Breite in Pixeln" />
+          <span class="unit">px</span>
+        </div>
+        <div>
+          <label for="address-0" class="sr-only">Adresse</label>
+          <input type="text" id="address-0" placeholder="Adresse" aria-label="Adresse eingeben" />
+        </div>
+      </form>
     </div>
-    <form>
-      <div>
-        <input type="text" id="rat-input" placeholder="Ersteller" />
-      </div>
-      <div>
-        <select name="platform" id="platform-select">
-          <option value="ALL">DDC4000 & DDC420</option>
-          <option value="DDC">DDC4000</option>
-          <option value="BMR">DDC420</option>
-        </select>
-      </div>
-      <div>
-        <input type="text" id="imagename-input" placeholder="Objekt Name" />
-      </div>
-      <div>
-        <input type="number" id="width-input" value="300" placeholder="Breite" min="300" />
-        <span class="unit">px</span>
-      </div>
-      <div>
-        <input type="text" id="address-0" placeholder="Adresse" />
-      </div>
-    </form>
-  </div>
-  <div class="xml-output-container">
-    <span id="fileName" class="xml-title">XML</span>
-    <pre id="xml-output"></pre>
-  </div>
+    
+    <section class="xml-output-container" aria-labelledby="xml-output-title">
+      <h2 id="xml-output-title" class="xml-title">XML Output</h2>
+      <pre id="xml-output" aria-live="polite"></pre>
+    </section>
+  </main>
+  
   <footer class="footer">
-    <p>&copy; 2025 rappo.dev</p>
+    <p>&copy; 2025 <a href="https://rappo.dev" rel="noopener">rappo.dev</a></p>
     <div class="footer-buttons">
-      <button id="downloads-button" type="button" class="terms-button">
+      <a href="/src/download/" class="terms-button" id="downloads-button">
         Downloads
-      </button>
-      <button id="refresh-button" type="button" class="terms-button">
+      </a>
+      <button id="refresh-button" type="button" class="terms-button" aria-label="Zurücksetzen">
         Reset
       </button>
-      <button id="settings-button" type="button" class="terms-button">
+      <button id="settings-button" type="button" class="terms-button" aria-label="Einstellungen öffnen">
         Einstellungen
       </button>
     </div>
   </footer>
-  </div>
-  <div class="popup" id="settings-popup">
-    <h2>Einstellungen <span class="close-popup">×</span></h2>
+  
+  <div class="popup" id="settings-popup" role="dialog" aria-labelledby="settings-title" aria-hidden="true">
+    <h2 id="settings-title">Einstellungen <button class="close-popup" aria-label="Schließen">&times;</button></h2>
     <form>
       <h3>Generator</h3>
       <div class="popup-input">
-        <label>Stadart Name:</label>
+        <label for="name-setting">Stadart Name:</label>
         <span class="alt-text"></span>
-        <input type="text" id="name-setting"  value="UNK" placeholder="Name"/>
+        <input type="text" id="name-setting" value="UNK" placeholder="Name"/>
       </div>
       <div class="popup-input">
-        <label>Stadart Breite:</label>
+        <label for="width-setting">Stadart Breite:</label>
         <span class="alt-text"></span>
         <input type="number" id="width-setting" value="300" placeholder="Breite" min="300" />
       </div>
       <br />
       <h3>Hotkeys</h3>
       <div class="popup-input">
-        <label>XML Erstellen:</label>
+        <label for="generate-hotkey">XML Erstellen:</label>
         <span class="alt-text">Alt +</span>
         <input type="text" id="generate-hotkey" value="g" />
       </div>
       <br />
       <div class="popup-input">
-        <label>Datei Speichern:</label>
+        <label for="save-hotkey">Datei Speichern:</label>
         <span class="alt-text">Alt +</span>
         <input type="text" id="save-hotkey" value="s" />
       </div>
       <br />
       <div class="popup-input">
-        <label>Zurücksetzen:</label>
+        <label for="reset-hotkey">Zurücksetzen:</label>
         <span class="alt-text">Alt +</span>
         <input type="text" id="reset-hotkey" value="t" />
       </div>
       <br />
       <div class="popup-input">
-        <label>Neu Adressen-Eingabe:</label>
+        <label for="add-button-hotkey">Neu Adressen-Eingabe:</label>
         <span class="alt-text">Alt +</span>
         <input type="text" id="add-button-hotkey" value="a" />
       </div>
       <br />
       <div class="popup-input">
-        <label>Entfernen:</label>
+        <label for="remove-button-hotkey">Entfernen:</label>
         <span class="alt-text">Alt +</span>
         <input type="text" id="remove-button-hotkey" value="y" />
       </div>
       <br />
       <div class="popup-input">
-        <label>Adressen Ausfüllen:</label>
+        <label for="fill-addresses-hotkey">Adressen Ausfüllen:</label>
         <span class="alt-text">Alt +</span>
         <input type="text" id="fill-addresses-hotkey" value="v" />
       </div>
@@ -157,12 +205,14 @@
       <button type="button" id="save-settings">Speichern</button>
     </form>
   </div>
+  
+  <!-- Add defer to non-critical scripts -->
   <script src="/src/generator/script/main.js"></script>
-  <script src="/src/generator/script/interfaces/interfaces.js"></script>
-  <script src="/src/generator/script/components/buttons.js"></script>
-  <script src="/src/generator/script/components/keyboard-events.js"></script>
-  <script src="/src/generator/script/components/settings.js"></script>
-  <script src="/src/generator/script/components/xml-generator.js"></script>
+  <script src="/src/generator/script/interfaces/interfaces.js" defer></script>
+  <script src="/src/generator/script/components/buttons.js" defer></script>
+  <script src="/src/generator/script/components/keyboard-events.js" defer></script>
+  <script src="/src/generator/script/components/settings.js" defer></script>
+  <script src="/src/generator/script/components/xml-generator.js" defer></script>
 </body>
 
 </html>
