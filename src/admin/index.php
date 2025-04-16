@@ -11,7 +11,7 @@ requireAuth();
 // Handle logout request
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     logout();
-    header('Location: login.php');
+    header('Location: /admin/login');
     exit;
 }
 
@@ -391,9 +391,9 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
         <div class="admin-header">
             <h1>K&P Service-Tool Administration</h1>
             <div class="admin-nav">
-                <a href="upload.php" class="btn-primary"><i class="fas fa-upload"></i> XML-Datei hochladen</a>
-                <a href="password.php"><i class="fas fa-key"></i> Passwort ändern</a>
-                <a href="?action=logout" class="logout"><i class="fas fa-sign-out-alt"></i> Abmelden</a>
+                <a href="/admin/upload" class="btn-primary"><i class="fas fa-upload"></i> XML-Datei hochladen</a>
+                <a href="/admin/password"><i class="fas fa-key"></i> Passwort ändern</a>
+                <a href="/admin?action=logout" class="logout"><i class="fas fa-sign-out-alt"></i> Abmelden</a>
             </div>
         </div>
 

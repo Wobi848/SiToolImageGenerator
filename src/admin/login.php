@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         try {
             if (authenticateUser($username, $password)) {
-                // Redirect to admin dashboard
-                header('Location: index.php');
+                // Redirect to admin dashboard using the clean URL path
+                header('Location: /admin');
                 exit;
             } else {
                 $error = 'Ungültiger Benutzername oder Passwort.';

@@ -96,7 +96,7 @@ function logout() {
  * Redirects to login page if user is not authenticated
  * @param string $loginUrl Login page URL
  */
-function requireAuth($loginUrl = 'login.php') {
+function requireAuth($loginUrl = '/admin/login') {
     if (!isLoggedIn()) {
         header("Location: $loginUrl");
         exit;
