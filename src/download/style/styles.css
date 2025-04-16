@@ -128,3 +128,139 @@
 .download-button:hover {
   background-color: #555; /* add a nice hover effect */
 }
+
+/* Filter styles */
+.filter-container {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+/* Button group for organizing action buttons */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  align-items: center;
+}
+
+/* Consistent styling for all buttons in the filter bar */
+.button-group button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for download all button in the filter bar */
+#download-all-button {
+  padding: 0 20px;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: #ffffff;
+  gap: 8px;
+}
+
+#download-all-button:hover {
+  background: linear-gradient(90deg, #0056b3, #003f7f);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#download-all-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Refresh button styling */
+#refresh-button {
+  background-color: #444;
+  color: #fff;
+  width: 40px;
+}
+
+#refresh-button:hover {
+  background-color: #555;
+  transform: rotate(180deg);
+}
+
+#refresh-button:active {
+  background-color: #666;
+  transform: rotate(360deg);
+}
+
+.filter-container label {
+  color: #fff;
+  margin-right: 5px;
+}
+
+#platform-filter {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background-color: #444;
+  color: #fff;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+#file-search {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background-color: #444;
+  color: #fff;
+  width: 200px;
+}
+
+.file-counter {
+  color: #999;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+/* Platform indicator */
+.file-platform {
+  font-size: 0.8em;
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-right: 15px;
+  width: 70px !important;
+  text-align: center !important;
+}
+
+/* Add responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  #file-search {
+    width: 100%;
+  }
+  
+  #file-list li {
+    flex-wrap: wrap;
+  }
+  
+  #file-list span {
+    margin-bottom: 5px;
+  }
+  
+  #file-list button {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}

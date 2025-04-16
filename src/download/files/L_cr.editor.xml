@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<EditorImageTemplate name="RAT" objectType="L" platform="DDC4000" version="1.7.1" langs="en,de" prescan="false">
+<EditorImageTemplate name="RAT" objectType="L" platform="BMR" version="2.01.1" langs="en,de" prescan="false">
     <!-- created with kp.rappo.dev 0.8.0 -->
     <Comment lang="en">Object Image</Comment>
     <Comment lang="de">Object Image</Comment>
