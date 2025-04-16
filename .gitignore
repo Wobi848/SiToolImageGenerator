@@ -1,4 +1,3 @@
-
 # Dependencies
 /node_modules
 /vendor
@@ -19,6 +18,10 @@ config.php
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Debug and test files
+/src/admin/debug.php
+/src/admin/test.php
 
 # Editor directories and files
 .idea

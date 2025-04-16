@@ -63,6 +63,10 @@ Si-Tool Image Generator is released under the MIT License.
 
 ## Version History
 
+* v1.3.1 - April 16, 2025
+  * Updated version number
+  * Maintenance release
+
 * v1.3.0 - April 16, 2025
   * Added platform filtering in download section
   * Improved responsive design

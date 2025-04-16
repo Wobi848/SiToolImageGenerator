@@ -1,4 +1,8 @@
 <?php
+// Require authentication
+require_once 'auth.php';
+requireAuth();
+
 // Basic PHP info for diagnostics
 echo "<!DOCTYPE html>
 <html lang='en'>
