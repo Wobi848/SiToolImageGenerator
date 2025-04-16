@@ -120,6 +120,27 @@ h1 {
   /* Add vertical margin to create space between button and footer edges */
   margin-top: 3px;
   margin-bottom: 3px;
+  /* Additional properties to normalize <a> and <button> appearance */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  line-height: normal;
+}
+
+/* Ensure <a> elements with terms-button class don't show underlines and keep their color */
+a.terms-button {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Ensure consistent hover states */
+.terms-button:hover, 
+a.terms-button:hover {
+  background-color: #666;
+  color: #fff;
+  text-decoration: none;
 }
 
 .footer-buttons {
