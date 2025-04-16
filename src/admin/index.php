@@ -87,21 +87,27 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
     <style>
         .admin-container {
             max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 10px auto;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
         .admin-header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         .admin-header h1 {
             margin: 0;
+            font-size: 1.8rem;
+            text-align: center;
         }
         .admin-nav {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
+            justify-content: center;
         }
         .admin-nav a {
             padding: 8px 15px;
@@ -110,6 +116,13 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s;
+            text-align: center;
+            flex: 1 1 auto;
+            min-width: 120px;
+            max-width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .admin-nav a:hover {
             background-color: #666;
@@ -123,9 +136,10 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
         .card {
             background-color: #333;
             border-radius: 8px;
-            padding: 20px;
+            padding: 15px;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* Allow horizontal scrolling if needed */
         }
         .card h2 {
             margin-top: 0;
@@ -133,6 +147,8 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             border-bottom: 1px solid #444;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
         }
         .alert-success {
             padding: 10px;
@@ -150,22 +166,39 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             background-color: #f8d7da;
             border: 1px solid #f5c6cb;
         }
+        .file-table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
         .file-table {
             width: 100%;
             border-collapse: collapse;
             color: #fff; /* Adding white text color for better visibility */
+            min-width: 600px; /* Ensure minimum width for scrolling on small devices */
         }
         .file-table th, .file-table td {
-            padding: 10px;
+            padding: 8px;
             border-bottom: 1px solid #444;
             text-align: left;
+            color: #fff; /* Explicitly setting text color for all cells */
+            word-break: break-word;
         }
         .file-table th {
             background-color: #444;
             color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
         .file-table tr:hover {
             background-color: #3a3a3a;
+        }
+        /* Ensure all text inside table is visible */
+        .file-table a {
+            color: #4dabf7; /* Light blue color for links in the table */
+        }
+        .file-table form {
+            color: #fff; /* Ensure form elements inside table are visible */
         }
         .platform-badge {
             display: inline-block;
@@ -197,6 +230,7 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             cursor: pointer;
             font-size: 14px;
             transition: background-color 0.3s;
+            white-space: nowrap;
         }
         .btn-danger {
             background-color: #d9534f;
@@ -211,6 +245,44 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
         }
         .btn-primary:hover {
             background-color: #d2691e;
+        }
+        
+        /* Media queries for responsive design */
+        @media (min-width: 768px) {
+            .admin-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .admin-header h1 {
+                text-align: left;
+                font-size: 2rem;
+            }
+            .admin-nav {
+                justify-content: flex-end;
+            }
+            .admin-nav a {
+                flex: 0 1 auto;
+            }
+            .admin-container {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            .card h2 {
+                text-align: left;
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* For very small screens */
+        @media (max-width: 480px) {
+            .admin-nav a {
+                min-width: 100%;
+                margin-bottom: 5px;
+            }
+            .card {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -243,54 +315,56 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             <?php if (empty($files)): ?>
                 <p>Keine XML-Dateien gefunden. Laden Sie neue Dateien hoch, um sie hier zu sehen.</p>
             <?php else: ?>
-                <table class="file-table">
-                    <thead>
-                        <tr>
-                            <th>Dateiname</th>
-                            <th>Plattform</th>
-                            <th>Version</th>
-                            <th>Hochgeladen am</th>
-                            <th>Hochgeladen von</th>
-                            <th>Aktionen</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($files as $file): ?>
+                <div class="file-table-container">
+                    <table class="file-table">
+                        <thead>
                             <tr>
-                                <td><?php echo htmlspecialchars($file['filename']); ?></td>
-                                <td>
-                                    <?php 
-                                        $platformClass = '';
-                                        switch ($file['platform']) {
-                                            case 'DDC4000':
-                                                $platformClass = 'platform-ddc';
-                                                break;
-                                            case 'BMR':
-                                                $platformClass = 'platform-bmr';
-                                                break;
-                                            default:
-                                                $platformClass = 'platform-all';
-                                        }
-                                    ?>
-                                    <span class="platform-badge <?php echo $platformClass; ?>">
-                                        <?php echo htmlspecialchars($file['platform']); ?>
-                                    </span>
-                                </td>
-                                <td><?php echo htmlspecialchars($file['version']); ?></td>
-                                <td><?php echo htmlspecialchars(date('d.m.Y H:i', strtotime($file['upload_date']))); ?></td>
-                                <td><?php echo htmlspecialchars($file['uploaded_by']); ?></td>
-                                <td class="actions">
-                                    <form method="post" onsubmit="return confirm('Sind Sie sicher, dass Sie diese Datei löschen möchten?');">
-                                        <input type="hidden" name="file_id" value="<?php echo $file['id']; ?>">
-                                        <button type="submit" name="delete_file" class="btn btn-danger">
-                                            <i class="fas fa-trash-alt"></i> Löschen
-                                        </button>
-                                    </form>
-                                </td>
+                                <th>Dateiname</th>
+                                <th>Plattform</th>
+                                <th>Version</th>
+                                <th>Hochgeladen am</th>
+                                <th>Hochgeladen von</th>
+                                <th>Aktionen</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($files as $file): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($file['filename']); ?></td>
+                                    <td>
+                                        <?php 
+                                            $platformClass = '';
+                                            switch ($file['platform']) {
+                                                case 'DDC4000':
+                                                    $platformClass = 'platform-ddc';
+                                                    break;
+                                                case 'BMR':
+                                                    $platformClass = 'platform-bmr';
+                                                    break;
+                                                default:
+                                                    $platformClass = 'platform-all';
+                                            }
+                                        ?>
+                                        <span class="platform-badge <?php echo $platformClass; ?>">
+                                            <?php echo htmlspecialchars($file['platform']); ?>
+                                        </span>
+                                    </td>
+                                    <td><?php echo htmlspecialchars($file['version']); ?></td>
+                                    <td><?php echo htmlspecialchars(date('d.m.Y H:i', strtotime($file['upload_date']))); ?></td>
+                                    <td><?php echo htmlspecialchars($file['uploaded_by']); ?></td>
+                                    <td class="actions">
+                                        <form method="post" onsubmit="return confirm('Sind Sie sicher, dass Sie diese Datei löschen möchten?');">
+                                            <input type="hidden" name="file_id" value="<?php echo $file['id']; ?>">
+                                            <button type="submit" name="delete_file" class="btn btn-danger">
+                                                <i class="fas fa-trash-alt"></i> Löschen
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             <?php endif; ?>
         </div>
     </div>
