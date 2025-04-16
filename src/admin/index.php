@@ -289,86 +289,92 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             .file-table th, .file-table td {
                 padding: 6px 4px; /* Reduce cell padding on mobile */
             }
-            
-            /* Force table to not be like a table on mobile */
-            @media (max-width: 480px) {
-                .file-table, .file-table thead, .file-table tbody, .file-table th, .file-table td, .file-table tr {
-                    display: block;
-                }
-                
-                /* Hide table headers */
-                .file-table thead tr {
-                    position: absolute;
-                    top: -9999px;
-                    left: -9999px;
-                }
-                
-                .file-table tr {
-                    margin-bottom: 15px;
-                    border: 1px solid #444;
-                    border-radius: 4px;
-                }
-                
-                .file-table td {
-                    /* Make like a row */
-                    border: none;
-                    border-bottom: 1px solid #444;
-                    position: relative;
-                    padding-left: 50%;
-                    text-align: right;
-                }
-                
-                .file-table td:before {
-                    /* Add labels for each cell */
-                    position: absolute;
-                    top: 6px;
-                    left: 6px;
-                    width: 45%;
-                    padding-right: 10px;
-                    white-space: nowrap;
-                    text-align: left;
-                    font-weight: bold;
-                    content: attr(data-label);
-                }
-                
-                /* Label each cell */
-                .file-table td:nth-of-type(1):before { content: "Dateiname"; }
-                .file-table td:nth-of-type(2):before { content: "Plattform"; }
-                .file-table td:nth-of-type(3):before { content: "Version"; }
-                .file-table td:nth-of-type(4):before { content: "Hochgeladen am"; }
-                .file-table td:nth-of-type(5):before { content: "Hochgeladen von"; }
-                .file-table td:nth-of-type(6):before { content: "Aktionen"; }
-                
-                /* Actions column needs special treatment */
-                .file-table td.actions {
-                    text-align: center;
-                    padding: 10px;
-                }
-                
-                .file-table td.actions:before {
-                    display: none; /* No label for actions */
-                }
-                
-                .file-table td.actions form {
-                    width: 100%;
-                }
-                
-                .file-table td.actions .btn {
-                    width: 100%;
-                    padding: 8px;
-                    font-size: 14px;
-                }
-            }
         }
         
-        /* For very small screens */
+        /* Special handling for very small screens */
         @media (max-width: 480px) {
             .admin-nav a {
                 min-width: 100%;
                 margin-bottom: 5px;
             }
+            
             .card {
                 padding: 10px;
+            }
+            
+            /* Mobile-friendly table layout */
+            .file-table {
+                display: block;
+                width: 100%;
+                font-size: 14px;
+            }
+            
+            .file-table thead {
+                display: none; /* Hide table header */
+            }
+            
+            .file-table tbody {
+                display: block;
+                width: 100%;
+            }
+            
+            .file-table tr {
+                display: block;
+                margin-bottom: 15px;
+                padding: 8px;
+                background-color: #3a3a3a;
+                border-radius: 4px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+            
+            .file-table td {
+                display: flex;
+                padding: 8px 4px;
+                border-bottom: 1px solid #444;
+                text-align: left;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .file-table td:last-child {
+                border-bottom: none;
+            }
+            
+            /* Add labels to each cell */
+            .file-table td:before {
+                content: attr(data-label);
+                font-weight: bold;
+                min-width: 40%;
+                margin-right: 10px;
+            }
+            
+            /* Platform badge styles for mobile */
+            .file-table td .platform-badge {
+                margin-left: auto;
+            }
+            
+            /* Style the actions column differently */
+            .file-table td.actions {
+                justify-content: center;
+                flex-direction: column;
+                padding: 10px 4px;
+            }
+            
+            .file-table td.actions:before {
+                margin-bottom: 8px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .file-table td.actions form {
+                width: 100%;
+            }
+            
+            .file-table td.actions .btn {
+                width: 100%;
+                padding: 8px;
+                font-size: 14px;
+                margin-top: 5px;
             }
         }
     </style>
