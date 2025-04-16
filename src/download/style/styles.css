@@ -264,3 +264,197 @@
     margin-left: 0;
   }
 }
+
+/* Base responsive styles - Mobile First approach */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0 10px;
+}
+
+/* Responsive typography */
+h1 {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  text-align: center;
+}
+
+/* Enhanced responsive styles for different screen sizes */
+/* Small phones (portrait) */
+@media (max-width: 480px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .filter-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  #platform-filter {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  #file-search {
+    width: 100%;
+  }
+  
+  .button-group {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  #download-all-button {
+    flex: 1;
+  }
+  
+  #file-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+  }
+  
+  #file-list .file-name {
+    width: 100%;
+    margin-right: 0;
+    font-size: 1rem;
+  }
+  
+  #file-list .file-platform,
+  #file-list .file-date,
+  #file-list .file-creator {
+    width: auto !important;
+    margin: 2px 5px 2px 0;
+    display: inline-block;
+  }
+  
+  #file-list button {
+    margin: 10px 0 0 0;
+    width: 100%;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .filter-container {
+    flex-wrap: wrap;
+    padding: 12px;
+  }
+  
+  .filter-container > * {
+    margin-bottom: 8px;
+  }
+  
+  .button-group {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  #file-search {
+    width: 100%;
+  }
+  
+  #file-list li {
+    flex-wrap: wrap;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+  }
+  
+  #file-list .file-name {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  #file-list .file-platform {
+    margin-left: 0;
+  }
+  
+  #file-list button {
+    margin-top: 8px;
+  }
+}
+
+/* Larger tablets and small laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .filter-container {
+    padding: 12px;
+  }
+  
+  #file-search {
+    width: 160px;
+  }
+  
+  #file-list li {
+    padding: 8px 5px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+  
+  #file-list .file-name {
+    width: 130px;
+  }
+  
+  #file-list span {
+    width: auto;
+    margin-right: 15px;
+  }
+}
+
+/* Desktop and larger screens */
+@media (min-width: 1025px) {
+  .container.filesp {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  #file-list li {
+    transition: background-color 0.2s ease;
+    padding: 8px 10px;
+    border-radius: 5px;
+  }
+  
+  #file-list li:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Make room for the platform indicator */
+  #file-list .file-name {
+    width: 180px;
+  }
+}
+
+/* Dark mode and reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .button-group button,
+  #file-list button {
+    padding: 12px 20px;  /* Larger touch targets */
+  }
+  
+  #file-list li {
+    padding: 12px 8px;
+  }
+}
