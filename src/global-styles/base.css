@@ -184,3 +184,18 @@ a.terms-button:hover {
 }
 
 /* Animated Background */
+
+/* Admin link styling */
+.admin-link {
+  margin-left: 5px;
+  color: #555;
+  opacity: 0.5;
+  transition: opacity 0.3s, color 0.3s;
+  text-decoration: none;
+}
+
+.admin-link:hover {
+  opacity: 1;
+  color: #888;
+  text-decoration: none;
+}

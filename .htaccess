@@ -5,3 +5,6 @@ RewriteRule ^$ /src/generator/index.html [L]
 
 # Redirect /downloads to /src/download
 RewriteRule ^downloads/?$ /src/download/index.html  [L]
+
+# Redirect /admin to /src/admin
+RewriteRule ^admin/?$ /src/admin/index.php [L]
