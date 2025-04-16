@@ -61,12 +61,16 @@
 
 .github-button {
   border-radius: 3px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 18px;
   margin-left: 10px;
+  margin-right: 5px; /* Add right margin */
   padding: 5px;
   opacity: 0.5;
   transition: opacity 0.5s ease-in-out;
+  flex-shrink: 0; /* Prevent the button from shrinking */
 }
 
 .github-button:hover {

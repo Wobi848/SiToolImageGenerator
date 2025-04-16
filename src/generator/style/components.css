@@ -47,7 +47,9 @@ input:disabled::placeholder {
   gap: 10px;
   max-width: 600px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 10px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 form > div > input[type="text"] {
@@ -113,14 +115,19 @@ input[type="number"]:focus {
   display: inline-block; /* make the span an inline-block element to control its margin */
 }
 
+.xml-output-container {
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  overflow-x: hidden;
+}
+
 #xml-output {
   white-space: pre;
   font-family: monospace;
-
   display: block;
   margin: 0 auto;
   box-sizing: border-box;
-
   border: 1px solid #333;
   background-color: #444;
   border-radius: 5px;
@@ -129,7 +136,8 @@ input[type="number"]:focus {
   overflow-x: auto;
   margin-top: 10px;
   max-height: 90vh;
-  max-width: calc(100% - 30px);
+  width: 100%;
+  max-width: 100%;
   padding: 15px;
 }
 
@@ -263,4 +271,15 @@ input[type="number"] {
 
 .close-popup:hover {
   color: #aaa;
+}
+
+/* Fix horizontal scrolling issues */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }

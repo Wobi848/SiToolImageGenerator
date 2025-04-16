@@ -39,7 +39,7 @@ header {
   text-align: center;
   color: #fff;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between; /* Changed from flex-start to space-between */
   align-items: center;
   background: linear-gradient(90deg, #333, #555);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -49,12 +49,15 @@ header {
   right: 0;
   margin-left: 0;
   margin-right: 0;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+  overflow: visible; /* Allow content to remain visible even if it overflows */
 }
 
 h1 {
   color: chocolate;
-  margin: 0 auto; /* Add this line */
+  margin: 0; /* Changed from margin: 0 auto */
   text-align: center;
+  flex: 1; /* Allow h1 to take available space */
 }
 
 .footer {
