@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="robots" content="noindex, nofollow">
     <title>K&P Service-Tool Admin Login</title>
     <link rel="stylesheet" href="/src/global-styles/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         .animated-background {
             position: relative;
@@ -189,6 +190,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
         }
         
+        /* Back button styles */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: chocolate;
+        }
+        
+        .back-link i {
+            margin-right: 5px;
+        }
+        
         /* Logo area */
         .logo {
             text-align: center;
@@ -229,6 +249,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <button type="submit" class="submit-btn">Anmelden</button>
         </form>
+        
+        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Zurück zur Hauptseite</a>
         
         <?php if (!empty($debug_errors) && ini_get('display_errors')): ?>
             <div class="debug-info">
