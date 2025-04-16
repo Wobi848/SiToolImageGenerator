@@ -153,6 +153,7 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
         .file-table {
             width: 100%;
             border-collapse: collapse;
+            color: #fff; /* Adding white text color for better visibility */
         }
         .file-table th, .file-table td {
             padding: 10px;
