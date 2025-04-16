@@ -1,5 +1,22 @@
 <?php
-require_once 'auth.php';
+// Enable detailed error logging during development
+ini_set('display_errors', 0); // Keep this 0 for production, change to 1 for debugging
+error_reporting(E_ALL);
+
+// Custom error handler to log details
+function customErrorHandler($errno, $errstr, $errfile, $errline) {
+    error_log("PHP Error [$errno]: $errstr in $errfile on line $errline");
+    return false; // Continue with PHP's internal error handler
+}
+set_error_handler("customErrorHandler");
+
+// Track any errors that occur
+$debug_errors = [];
+try {
+    require_once 'auth.php';
+} catch (Exception $e) {
+    $debug_errors[] = "Exception loading auth.php: " . $e->getMessage();
+}
 
 $error = '';
 
@@ -11,12 +28,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($username) || empty($password)) {
         $error = 'Bitte geben Sie Ihren Benutzernamen und Ihr Passwort ein.';
     } else {
-        if (authenticateUser($username, $password)) {
-            // Redirect to admin dashboard
-            header('Location: index.php');
-            exit;
-        } else {
-            $error = 'Ungültiger Benutzername oder Passwort.';
+        try {
+            if (authenticateUser($username, $password)) {
+                // Redirect to admin dashboard
+                header('Location: index.php');
+                exit;
+            } else {
+                $error = 'Ungültiger Benutzername oder Passwort.';
+            }
+        } catch (Exception $e) {
+            $debug_errors[] = "Authentication exception: " . $e->getMessage();
+            $error = 'Ein Systemfehler ist aufgetreten. Bitte versuchen Sie es später erneut.';
         }
     }
 }
@@ -81,6 +103,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-color: #f8d7da;
             border: 1px solid #f5c6cb;
         }
+        .debug-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 4px;
+            color: #ff9800;
+            font-family: monospace;
+            font-size: 12px;
+        }
         .submit-btn {
             padding: 10px 15px;
             background-color: chocolate;
@@ -120,6 +152,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <button type="submit" class="submit-btn">Anmelden</button>
         </form>
+        
+        <?php if (!empty($debug_errors) && ini_get('display_errors')): ?>
+            <div class="debug-info">
+                <strong>Debug Information:</strong>
+                <ul>
+                    <?php foreach($debug_errors as $debug_error): ?>
+                        <li><?php echo htmlspecialchars($debug_error); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
     </div>
 </body>
 </html>
