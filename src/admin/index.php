@@ -139,7 +139,6 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             padding: 15px;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow-x: auto; /* Allow horizontal scrolling if needed */
         }
         .card h2 {
             margin-top: 0;
@@ -167,14 +166,12 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             border: 1px solid #f5c6cb;
         }
         .file-table-container {
-            overflow-x: auto;
             width: 100%;
         }
         .file-table {
             width: 100%;
             border-collapse: collapse;
             color: #fff; /* Adding white text color for better visibility */
-            min-width: 600px; /* Ensure minimum width for scrolling on small devices */
         }
         .file-table th, .file-table td {
             padding: 8px;
@@ -193,7 +190,6 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
         .file-table tr:hover {
             background-color: #3a3a3a;
         }
-        /* Ensure all text inside table is visible */
         .file-table a {
             color: #4dabf7; /* Light blue color for links in the table */
         }
@@ -248,7 +244,6 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             background-color: #d2691e;
         }
         
-        /* Media queries for responsive design */
         @media (min-width: 768px) {
             .admin-header {
                 flex-direction: row;
@@ -275,42 +270,50 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             }
         }
         
-        /* Enhanced mobile responsiveness for tables */
         @media (max-width: 767px) {
             .file-table {
-                font-size: 0.9rem; /* Slightly smaller font on mobile */
+                font-size: 0.9rem;
             }
             
             .btn {
-                padding: 4px 8px; /* Smaller padding for buttons on mobile */
+                padding: 4px 8px;
                 font-size: 13px;
             }
             
             .file-table th, .file-table td {
-                padding: 6px 4px; /* Reduce cell padding on mobile */
+                padding: 6px 4px;
             }
         }
         
-        /* Special handling for very small screens */
         @media (max-width: 480px) {
+            .admin-container {
+                padding: 5px;
+                margin: 5px auto;
+            }
+            
             .admin-nav a {
                 min-width: 100%;
                 margin-bottom: 5px;
             }
             
             .card {
-                padding: 10px;
+                padding: 8px;
             }
             
-            /* Mobile-friendly table layout */
+            .file-table-container {
+                display: block;
+                width: 100%;
+            }
+            
             .file-table {
                 display: block;
                 width: 100%;
                 font-size: 14px;
+                min-width: auto;
             }
             
             .file-table thead {
-                display: none; /* Hide table header */
+                display: none;
             }
             
             .file-table tbody {
@@ -325,45 +328,42 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
                 background-color: #3a3a3a;
                 border-radius: 4px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                box-sizing: border-box;
             }
             
             .file-table td {
-                display: flex;
+                display: block;
                 padding: 8px 4px;
                 border-bottom: 1px solid #444;
                 text-align: left;
-                align-items: center;
-                justify-content: space-between;
+                width: 100%;
+                box-sizing: border-box;
+                word-break: break-word;
             }
             
             .file-table td:last-child {
                 border-bottom: none;
             }
             
-            /* Add labels to each cell */
             .file-table td:before {
                 content: attr(data-label);
                 font-weight: bold;
-                min-width: 40%;
-                margin-right: 10px;
+                display: block;
+                margin-bottom: 5px;
+                color: #aaa;
             }
             
-            /* Platform badge styles for mobile */
+            .file-table td[data-label="Dateiname"] {
+                word-break: break-all;
+            }
+            
             .file-table td .platform-badge {
-                margin-left: auto;
+                margin-top: 5px;
             }
             
-            /* Style the actions column differently */
             .file-table td.actions {
-                justify-content: center;
-                flex-direction: column;
                 padding: 10px 4px;
-            }
-            
-            .file-table td.actions:before {
-                margin-bottom: 8px;
-                width: 100%;
-                text-align: center;
             }
             
             .file-table td.actions form {
@@ -372,9 +372,16 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             
             .file-table td.actions .btn {
                 width: 100%;
-                padding: 8px;
-                font-size: 14px;
+                padding: 10px;
+                font-size: 16px;
                 margin-top: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .file-table td.actions .btn i {
+                margin-right: 8px;
             }
         }
     </style>
