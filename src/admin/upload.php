@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             if ($result) {
                                 $_SESSION['success_message'] = 'Datei wurde erfolgreich hochgeladen.';
                                 // Redirect to index page after successful upload
-                                header('Location: index.php');
+                                header('Location: /admin');
                                 exit;
                             } else {
                                 $errorMessage = 'Fehler beim Speichern der Dateiinformationen in der Datenbank.';
@@ -228,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="admin-header">
             <h1>XML-Datei hochladen</h1>
             <div class="admin-nav">
-                <a href="index.php"><i class="fas fa-arrow-left"></i> Zurück zum Dashboard</a>
+                <a href="/admin"><i class="fas fa-arrow-left"></i> Zurück zum Dashboard</a>
             </div>
         </div>
 
