@@ -63,7 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             ]);
                             
                             if ($result) {
-                                $successMessage = 'Datei wurde erfolgreich hochgeladen.';
+                                $_SESSION['success_message'] = 'Datei wurde erfolgreich hochgeladen.';
+                                // Redirect to index page after successful upload
+                                header('Location: index.php');
+                                exit;
                             } else {
                                 $errorMessage = 'Fehler beim Speichern der Dateiinformationen in der Datenbank.';
                                 // Delete the uploaded file since we couldn't add it to the database

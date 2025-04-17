@@ -1,19 +1,28 @@
+
+# SiToolImageGenerator Apache Configuration
+
 RewriteEngine On
 
 # Redirect root URL to /src/generator/index.html
+
 RewriteRule ^$ /src/generator/index.html [L]
 
 # Redirect /downloads to /src/download
+
 RewriteRule ^downloads/?$ /src/download/index.html  [L]
 
 # Redirect /admin to /src/admin
+
 RewriteRule ^admin/?$ /src/admin/index.php [L]
 
 # Add clean URL for admin login
+
 RewriteRule ^admin/login/?$ /src/admin/login.php [L]
 
 # Add clean URL for admin password change
+
 RewriteRule ^admin/password/?$ /src/admin/password.php [L]
 
 # Add clean URL for admin file upload
+
 RewriteRule ^admin/upload/?$ /src/admin/upload.php [L]

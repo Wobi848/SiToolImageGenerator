@@ -393,6 +393,8 @@ if (isset($_POST['delete_file']) && isset($_POST['file_id'])) {
             <div class="admin-nav">
                 <a href="/admin/upload" class="btn-primary"><i class="fas fa-upload"></i> XML-Datei hochladen</a>
                 <a href="/admin/password"><i class="fas fa-key"></i> Passwort ändern</a>
+                <a href="/src/download/" target="_blank"><i class="fas fa-download"></i> Download Seite</a>
+                <a href="/src/generator/" target="_blank"><i class="fas fa-tools"></i> Generator Seite</a>
                 <a href="/admin?action=logout" class="logout"><i class="fas fa-sign-out-alt"></i> Abmelden</a>
             </div>
         </div>
