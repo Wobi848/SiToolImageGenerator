@@ -1,4 +1,38 @@
 /* General Styles */
+
+/* Breadcrumb Navigation for existing tools */
+.breadcrumb-nav {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+}
+
+.breadcrumb-link {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb-link:hover {
+  color: #66BB6A;
+}
+
+.breadcrumb-separator {
+  color: #888;
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+.breadcrumb-current {
+  color: #fff;
+  font-weight: 500;
+}
 body {
   margin: 0;
   padding: 0;

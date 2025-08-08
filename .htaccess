@@ -1,28 +1,62 @@
-
-# SiToolImageGenerator Apache Configuration
+# K&P Service-Tools Platform - URL Rewrite Rules
+# Ensures backward compatibility while enabling new landing page
 
 RewriteEngine On
 
-# Redirect root URL to /src/generator/index.html
+# Security Headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options SAMEORIGIN
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
 
-RewriteRule ^$ /src/generator/index.html [L]
+# Enable GZIP compression for better performance
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
 
-# Redirect /downloads to /src/download
+# Cache static assets for better performance
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+</IfModule>
 
-RewriteRule ^downloads/?$ /src/download/index.html  [L]
+# Backward compatibility maintained:
+# /src/generator/ -> continues to work as before
+# /src/download/ -> continues to work as before
+# /src/admin/ -> continues to work as before
 
-# Redirect /admin to /src/admin
+# Handle missing files gracefully
+ErrorDocument 404 /index.html
 
-RewriteRule ^admin/?$ /src/admin/index.php [L]
+# Prevent access to sensitive files
+<Files ".htaccess">
+    Order allow,deny
+    Deny from all
+</Files>
 
-# Add clean URL for admin login
+<Files "*.md">
+    Order allow,deny
+    Deny from all
+</Files>
 
-RewriteRule ^admin/login/?$ /src/admin/login.php [L]
+# Prevent directory browsing
+Options -Indexes
 
-# Add clean URL for admin password change
-
-RewriteRule ^admin/password/?$ /src/admin/password.php [L]
-
-# Add clean URL for admin file upload
-
-RewriteRule ^admin/upload/?$ /src/admin/upload.php [L]
+# Set default character set
+AddDefaultCharset UTF-8
