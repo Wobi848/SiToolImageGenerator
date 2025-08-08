@@ -15,7 +15,7 @@ if (domain_name == "kp.rappo.dev") {
 if (debug)
     console.log("debugOn");
 // Info
-console.log(`%cv${version} %c- Alle anregungen an %ct.rappo@kieback-peter.ch`, "color: yellow; font-weight:bold", "color: white; font-weight:bold", "color: orange; font-weight:bold");
+console.log(`%cv${version} %c- Alle anregungen an %csupport@rappo.dev`, "color: yellow; font-weight:bold", "color: white; font-weight:bold", "color: orange; font-weight:bold");
 // XML Variables
 let inputsIndex = [0]; // Index for inputs
 let backgroundLayer = []; // Background layer configuration

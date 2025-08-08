@@ -18,7 +18,7 @@ if (debug) console.log("debugOn");
 
 // Info
 console.log(
-  `%cv${version} %c- Alle anregungen an %ct.rappo@kieback-peter.ch`,
+  `%cv${version} %c- Alle anregungen an %csupport@rappo.dev`,
   "color: yellow; font-weight:bold",
   "color: white; font-weight:bold",
   "color: orange; font-weight:bold"
