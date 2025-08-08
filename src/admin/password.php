@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="admin-header">
             <h1>Passwort ändern</h1>
             <div class="admin-nav">
-                <a href="index.php"><i class="fas fa-arrow-left"></i> Zurück zum Dashboard</a>
+                <a href="/admin"><i class="fas fa-arrow-left"></i> Zurück zum Dashboard</a>
             </div>
         </div>
 

@@ -137,3 +137,38 @@ function changePassword($userId, $oldPassword, $newPassword) {
         return false;
     }
 }
+
+/**
+ * Generate a URL based on application configuration
+ * @param string $path The path to append to the base URL or app route
+ * @param bool $absolute Whether to return an absolute URL (with domain) or just the path
+ * @return string The generated URL
+ */
+function getAppUrl($path, $absolute = false) {
+    global $appConfig;
+    
+    if (!isset($appConfig)) {
+        require_once 'config.php';
+    }
+    
+    // Handle known app routes
+    switch ($path) {
+        case 'admin':
+            $path = $appConfig['admin_path'];
+            break;
+        case 'download':
+            $path = $appConfig['download_path'];
+            break;
+        case 'generator':
+            $path = $appConfig['generator_path'];
+            break;
+    }
+    
+    // Return absolute URL if requested
+    if ($absolute) {
+        return $appConfig['base_url'] . $path;
+    }
+    
+    // Otherwise return just the path
+    return $path;
+}
